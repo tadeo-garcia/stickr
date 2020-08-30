@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <Route path="/">
-        <h1>My Home Page</h1>
+        <h1>STICKR</h1>
       </Route>
     </BrowserRouter>
   );
