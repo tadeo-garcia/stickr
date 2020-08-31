@@ -21,8 +21,11 @@ app.use(cookieParser())
 
 
 // Security Middleware
-app.use(cors({ origin: true }));
-app.use(helmet({ hsts: false }));
+if (process.env.NODE_ENV === 'production') {
+  app.use(cors({ origin: false }));
+  app.use(helmet({ hsts: true }));
+  // rejects requests that are not httpS
+}
 app.use(
   csurf({
     cookie: {
@@ -50,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.use(function(_req, _res, next) {
+app.use(function (_req, _res, next) {
   next(createError(404));
 });
 
@@ -64,7 +67,7 @@ app.use((err, _req, _res, next) => {
   next(err);
 });
 
-app.use(function(err, _req, res, _next) {
+app.use(function (err, _req, res, _next) {
   res.status(err.status || 500);
   if (err instanceof AuthenticationError) {
     res.clearCookie('token');

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 function App() {
   const [loading, setLoading] = useState(true);
 
