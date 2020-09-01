@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Pages from './pages/Pages';
+import { setUser } from './store/auth';
+
+
+
 function App() {
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loadUser = async () => {
@@ -9,19 +16,18 @@ function App() {
       const res = await fetch("/api/session");
       if (res.ok) {
         res.data = await res.json(); // current user info
+        dispatch(setUser(res.data.user))
       }
       setLoading(false);
     }
     loadUser();
-  }, []);
+  }, [dispatch]);
 
   if (loading) return null;
 
   return (
     <BrowserRouter>
-      <Route path="/">
-        <h1>STICKR</h1>
-      </Route>
+      <Pages />
     </BrowserRouter>
   );
 }

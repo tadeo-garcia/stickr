@@ -8,19 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-        unique: true,
-      },
       username: {
         allowNull: false,
-        type: Sequelize.STRING(255),
+        type: Sequelize.STRING(50),
         unique: true,
       },
       hashedPassword: {
         allowNull: false,
         type: Sequelize.STRING(60).BINARY,
+      },
+      aboutMe: {
+        allowNull: true,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
