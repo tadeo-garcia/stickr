@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth';
-import { Redirect } from 'react-router-dom';
-import './loginpage.css';
+import { Redirect, Link } from 'react-router-dom';
+import './authpage.css';
 
 import LoginNavbar from '../components/LoginNavBar';
 
@@ -30,8 +30,8 @@ function LoginPage() {
     <>
       <LoginNavbar />
       <div class='main-container' >
-        <div class='form-container'>
-          <div class='form-div'>
+        <div id='login-form-container'>
+          <div id='login-form-div'>
             <div id='logo-div' />
             <span id='login-text'>Log in to Stickr</span>
             <form id='login-form' onSubmit={handleSubmit}>
@@ -51,8 +51,7 @@ function LoginPage() {
             </form>
             <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
             <span id='member-text'>Not a Stickr member?
-              <a href='/signup' id='demo'> Sign up here.</a>
-            </span>
+            <Link to="/signup" id='demo'> Sign up here.</Link></span>
           </div>
         </div>
       </div >
