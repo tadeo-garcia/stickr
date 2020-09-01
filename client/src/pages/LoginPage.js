@@ -49,7 +49,7 @@ function LoginPage() {
                 placeholder='Password' />
               <button id='login-button' type='submit'>Sign in</button>
             </form>
-            <a href='/login' id='demo' onClick={handleSubmitDemo}>Login with a demo user?</a>
+            <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
             <span id='member-text'>Not a Stickr member?
               <a href='/signup' id='demo'> Sign up here.</a>
             </span>
