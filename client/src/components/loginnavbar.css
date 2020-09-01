@@ -1,0 +1,15 @@
+.navbar-div{
+  width:100%;
+  height:48px;
+  background-color: #212124;
+  display:flex;
+  align-items: center;
+}
+
+#home-link{
+  margin-left: 100px;
+  font-weight: 900;
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+}
