@@ -1,14 +1,13 @@
 .main-container {
   width:100%;
-  height:100vh;
+  height: 96vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image:url('https://bloximages.newyork1.vip.townnews.com/postandcourier.com/content/tncms/assets/v3/editorial/6/05/6059fd8e-b385-11e8-ad14-076947f720c5/5b93fa9e52e9b.image.jpg?resize=1200%2C900'); */
-  /* background-image:url('/client/public/stickr-pics/background-images/10.png'); */
+  background-image:url('/pics/background/12.png');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: darkgray; */
+ 
 }
 
 .form-container {
@@ -25,15 +24,12 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
 #logo-div{
-  background-image: url("/client/public/pics/stickricon.jpg");
+  background-image: url("/pics/stickricon.jpg");
   background-size:contain;
-  /* background-color: yellow; */
-  /* border: 1px solid gray; */
   height:64px;
   width:64px;
   margin-top:5px;
@@ -58,7 +54,6 @@
   border-radius: 5px;
   border: 1px solid gray;
   font-size: 14px;
-  /* font-weight: bold; */
   padding-left: 15px;
   width: 272px;
   height: 56px;

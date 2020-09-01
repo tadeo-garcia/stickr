@@ -19,12 +19,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser())
 
-
-// Security Middleware
 if (process.env.NODE_ENV === 'production') {
   app.use(cors({ origin: false }));
   app.use(helmet({ hsts: true }));
-  // rejects requests that are not httpS
 }
 app.use(
   csurf({
@@ -38,8 +35,6 @@ app.use(
 
 app.use(routes);
 
-// Serve React Application
-// This should come after routes, but before 404 and error handling.
 if (process.env.NODE_ENV === "production") {
   app.get('/', (req, res) => {
     res.cookie("XSRF-TOKEN", req.csrfToken());
@@ -58,7 +53,6 @@ app.use(function (_req, _res, next) {
 });
 
 app.use((err, _req, _res, next) => {
-  // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
     err.errors = err.errors.map((e) => e.message);
     err.title = "Sequelize Error";

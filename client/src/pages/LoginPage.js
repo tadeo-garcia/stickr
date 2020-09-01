@@ -6,8 +6,6 @@ import './loginpage.css';
 
 import LoginNavbar from '../components/LoginNavBar';
 
-import background from '../stickr-pics/background-images/12.png'
-import logo from '../stickr-pics/stickricon.jpg'
 
 function LoginPage() {
   const [username, setUsername] = useState();
@@ -22,22 +20,14 @@ function LoginPage() {
 
   if (currentUserId) return <Redirect to='/' />;
 
-  const mainBackground = {
-    backgroundImage: `url(${background})`
-  }
-
-  const logoBackground = {
-    backgroundImage: `url(${logo})`
-  }
-
 
   return (
     <>
       <LoginNavbar />
-      <div class='main-container' style={mainBackground}>
+      <div class='main-container' >
         <div class='form-container'>
           <div class='form-div'>
-            <div id='logo-div' style={logoBackground} />
+            <div id='logo-div' />
             <span id='login-text'>Log in to Stickr</span>
             <form id='login-form' onSubmit={handleSubmit}>
               <input class="form-input"
@@ -57,14 +47,6 @@ function LoginPage() {
             <a href='/demologin' id='demo' >Login with a demo user?</a>
             <span id='member-text'>Not a Stickr member?
               <a href='/signup' id='demo' > Sign up here.</a>
-            </span>
-          </div>
-          <div class='form-footer'>
-            <span>Language</span>
-            <span>
-              <a id='footer-link' href='/help'>Help</a>
-              <a id='footer-link' href='/help/privacy'>Privacy</a>
-              <a id='footer-link' href='/help/terms'>Terms</a>
             </span>
           </div>
         </div>
