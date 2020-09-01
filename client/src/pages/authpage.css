@@ -10,16 +10,33 @@
  
 }
 
-.form-container {
+#login-form-container {
   width: 320px;
   height: 457px;
   display:grid;
   grid-template-rows: auto;
 }
 
-.form-div{
+#signup-form-container {
+  width: 320px;
+  height: 600px;
+  display:grid;
+  grid-template-rows: auto;
+}
+
+#login-form-div{
   width: inherit;
   height: 425px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signup-form-div{
+  width: inherit;
+  height: 500px;
   border-radius: 5px;
   background-color: white;
   display: flex;

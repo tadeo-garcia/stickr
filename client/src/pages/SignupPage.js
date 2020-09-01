@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/auth';
+import { signup, login } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import './authpage.css';
 
 import LoginNavbar from '../components/LoginNavBar';
 
 
-function LoginPage() {
+function SignupPage() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [passwordConfirm, setPasswordConfirm] = useState();
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.auth.id);
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(login(username, password))
+    dispatch(signup(username, password, passwordConfirm))
   }
 
   const handleSubmitDemo = e => {
@@ -30,10 +31,10 @@ function LoginPage() {
     <>
       <LoginNavbar />
       <div class='main-container' >
-        <div id='login-form-container'>
-          <div id='login-form-div'>
+        <div id='signup-form-container'>
+          <div id='signup-form-div'>
             <div id='logo-div' />
-            <span id='login-text'>Log in to Stickr</span>
+            <span id='login-text'>Sign up for Stickr</span>
             <form id='login-form' onSubmit={handleSubmit}>
               <input class="form-input"
                 type='text'
@@ -47,11 +48,17 @@ function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Password' />
-              <button id='login-button' type='submit'>Sign in</button>
+              <input class="form-input"
+                type='password'
+                name='passwordConfirm'
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                placeholder='Confirm Password' />
+              <button id='login-button' type='submit'>Sign up</button>
             </form>
             <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
-            <span id='member-text'>Not a Stickr member?
-            <Link to="/signup" id='demo'> Sign up here.</Link></span>
+            <span id='member-text'>Already a member?
+            <Link to="/login" id='demo'> Login here.</Link></span>
           </div>
         </div>
       </div >
@@ -59,4 +66,4 @@ function LoginPage() {
   )
 };
 
-export default LoginPage;
+export default SignupPage;

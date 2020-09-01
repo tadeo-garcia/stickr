@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 
 const SET_USER = 'auth/SET_USER';
+const CREATE_USER = 'auth/CREATE_USER';
 
 export const setUser = (user) => {
   return {
@@ -9,19 +10,44 @@ export const setUser = (user) => {
   };
 };
 
+export const createUser = (user) => {
+  return {
+    type: CREATE_USER,
+    user
+  }
+}
+
 export const login = (username, password) => {
   return async dispatch => {
     const res = await fetch('/api/session', {
       method: 'put',
       headers: {
         "Content-Type": "application/json",
-        "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
       body: JSON.stringify({ username, password })
     })
     res.data = await res.json(); // {user with the scope of currentUser}
     if (res.ok) {
       dispatch(setUser(res.data.user))
+    }
+    return res;
+  }
+}
+
+export const signup = (username, password, passwordConfirm) => {
+  return async dispatch => {
+    const res = await fetch('/api/users', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+      },
+      body: JSON.stringify({ username, password, passwordConfirm })
+    })
+    res.data = await res.json();
+    if (res.ok) {
+      dispatch(createUser(res.data.user));
     }
     return res;
   }
@@ -34,6 +60,8 @@ export const login = (username, password) => {
 export default function authReducer(state = {}, action) {
   switch (action.type) {
     case SET_USER:
+      return action.user;
+    case CREATE_USER:
       return action.user;
     default:
       return state;
