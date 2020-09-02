@@ -14,7 +14,7 @@
 #modal-navbar-div{
   width:100%;
   height:48px;
-  background-color: #21212480;
+  background-color: #212124;
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -30,6 +30,34 @@
   font-size: 32px;
   text-decoration: none;
   color: white;
+}
+
+.nav-icons-div {
+  display:flex;
+  align-items:center;
+  margin-right: 75px;
+}
+
+#cloud-icon{
+  height: 32px;
+  width: 32px;
+  background-image:url('/pics/icons/cloudiconw.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+#cloud-icon:hover{
+  background-image:url('/pics/icons/cloudicong.png');
+}
+
+#avatar-icon{
+  margin-left: 20px;
+  height: 32px;
+  width: 32px;
+  background-image:url('/pics/icons/stickravatar.png');
+  background-size: cover;
+  cursor: pointer;
+
 }
 
 #login-link{

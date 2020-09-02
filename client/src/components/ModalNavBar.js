@@ -7,9 +7,10 @@ function ModalNavbar() {
   return (
     <div id='modal-navbar-div'>
       <span><NavLink id='home-link' to='/'>stickr</NavLink></span>
-      <span>
-        Avatar Goes here
-      </span>
+      <div class="nav-icons-div">
+        <div id='cloud-icon' />
+        <div id='avatar-icon' />
+      </div>
     </div>
   )
 };
