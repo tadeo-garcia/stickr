@@ -1,0 +1,56 @@
+#basic-navbar-div{
+  width:100%;
+  height:48px;
+  background-color: #21212480;
+
+  display:flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+#modal-navbar-div{
+  width:100%;
+  height:48px;
+  background-color: #21212480;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+#home-link{
+  margin-left: 75px;
+  font-weight: 900;
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+}
+
+#login-link{
+  text-decoration: none;
+  color: white;
+}
+
+#signup-link{
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  border-radius: 3px;
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 20px;
+  margin-right: 75px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+

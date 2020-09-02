@@ -4,7 +4,9 @@ import { signup, login } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import './authpage.css';
 
-import LoginNavbar from '../components/LoginNavBar';
+import AuthNavbar from '../components/AuthNavBar';
+import FooterBar from '../components/FooterBar';
+
 
 
 function SignupPage() {
@@ -29,8 +31,8 @@ function SignupPage() {
 
   return (
     <>
-      <LoginNavbar />
-      <div class='main-container' >
+      <AuthNavbar />
+      <div class='auth-container' >
         <div id='signup-form-container'>
           <div id='signup-form-div'>
             <div id='logo-div' />
@@ -54,13 +56,14 @@ function SignupPage() {
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
                 placeholder='Confirm Password' />
-              <button id='login-button' type='submit'>Sign up</button>
+              <button id='form-button' type='submit'>Sign up</button>
             </form>
             <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
             <span id='member-text'>Already a member?
             <Link to="/login" id='demo'> Login here.</Link></span>
           </div>
         </div>
+        <FooterBar />
       </div >
     </>
   )

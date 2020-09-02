@@ -1,0 +1,81 @@
+#footerbar-div{
+  width:100%;
+  height:48px;
+  background-color: #000;
+
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#footer-link{
+  margin-left: 75px;
+  font-weight: lighter;
+  font-size: 20px;
+  text-decoration: none;
+  color: #8c8c8c;
+}
+
+#footer-link:hover{
+  color: white;
+}
+
+#icons-div{
+  display:flex;
+  flex-direction: row;
+  margin-right: 75px;
+}
+
+.icon-div{
+  margin: 0px 25px;
+}
+
+#facebook{
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/fbicong.png');
+  background-size: cover;
+}
+
+#facebook:hover{
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/fbiconw.png');
+  background-size: cover;
+}
+
+
+#twitter{
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/twittericong.png');
+  background-size: cover;
+}
+
+#twitter:hover{
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/twittericonw.png');
+  background-size: cover;
+}
+
+
+#insta{
+  /* margin-right: -25px; */
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/igicong.png');
+  background-size: cover;
+}
+
+#insta:hover{
+  /* margin-right: -25px; */
+  height:20px;
+  width:20px;
+  background-image:url('/pics/icons/igiconw.png');
+  background-size: cover;
+}

@@ -4,7 +4,8 @@ import { login } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import './authpage.css';
 
-import LoginNavbar from '../components/LoginNavBar';
+import AuthNavbar from '../components/AuthNavBar';
+import FooterBar from '../components/FooterBar';
 
 
 function LoginPage() {
@@ -28,8 +29,8 @@ function LoginPage() {
 
   return (
     <>
-      <LoginNavbar />
-      <div class='main-container' >
+      <AuthNavbar />
+      <div class='auth-container' >
         <div id='login-form-container'>
           <div id='login-form-div'>
             <div id='logo-div' />
@@ -47,13 +48,14 @@ function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Password' />
-              <button id='login-button' type='submit'>Sign in</button>
+              <button id='form-button' type='submit'>Sign in</button>
             </form>
             <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
             <span id='member-text'>Not a Stickr member?
             <Link to="/signup" id='demo'> Sign up here.</Link></span>
           </div>
         </div>
+        <FooterBar />
       </div >
     </>
   )
