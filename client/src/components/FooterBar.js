@@ -11,7 +11,7 @@ function FooterBar() {
       <div id='icons-div'>
         <a href='https://www.facebook.com/TADEOOO/'><div className='icon-div' id='facebook' /></a>
         <a href='https://twitter.com/adet_o'><div className='icon-div' id='twitter' /></a>
-        <a href='https://instagram.com/o76f3__8'><div className='icon-div' id='insta' /></a>
+        <a href='https://instagram.com/o76fn3__8'><div className='icon-div' id='insta' /></a>
       </div>
     </div >
   )
