@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import './logoutmodal.css';
-
 import { logout } from '../store/auth'
+import './logoutmodal.css';
 
 export default function LogoutModal({ hideModal }) {
   const history = useHistory();
@@ -40,7 +39,6 @@ export default function LogoutModal({ hideModal }) {
     e.preventDefault();
     dispatch(logout())
     history.push('/')
-    // window.location.reload();
   }
 
   return (

@@ -12,7 +12,6 @@ function HomePage() {
 
   if (currentUserId) return <Redirect to='/dashboard' />;
 
-
   let Navbar;
 
   if (currentUserId) {
@@ -21,11 +20,10 @@ function HomePage() {
     Navbar = <HomeNavbar />
   }
 
-
   return (
     <>
       <div>{Navbar}</div>
-      <div class='main-container' >
+      <div className='main-container' >
         <div id='motto-div'>
           <h1>Find your inspiration.</h1>
           <h2>Join the Stickr community, every artist around the world is welcome here. </h2>

@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import './navbar.css';
 import LogoutModal from '../components/LogoutModal'
 
-
 function ModalNavbar() {
   const [displayModal, setDisplayModal] = useState(null)
   const hideModal = (e) => {
@@ -12,11 +11,8 @@ function ModalNavbar() {
   }
 
   const showModal = () => {
-    console.log('hello modal')
     setDisplayModal(<LogoutModal hideModal={hideModal} />);
   }
-
-  console.log(displayModal)
 
   return (
     <div id='modal-navbar-div'>

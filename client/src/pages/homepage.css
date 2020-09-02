@@ -8,17 +8,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   
-  /* TRYING OUT BACKGROUND TRANSITION below */
-  
   transition: 6s;
-
   animation-name:animate;
   animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: none ;
-  
- 
 }
 
 @keyframes animate{
@@ -38,11 +33,6 @@
     background-image: url('/pics/background/20.jpg')
   }
 }
-
-
-
-
-
 
 #motto-div{
   padding-top: 85px;
@@ -66,7 +56,6 @@ h2{
   font-weight: lighter;
   margin-bottom: 10px;
 }
-
 
 #login-button { 
   display:flex;

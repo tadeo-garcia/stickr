@@ -7,7 +7,6 @@ import './authpage.css';
 import AuthNavbar from '../components/AuthNavBar';
 import FooterBar from '../components/FooterBar';
 
-
 function LoginPage() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -26,23 +25,22 @@ function LoginPage() {
 
   if (currentUserId) return <Redirect to='/' />;
 
-
   return (
     <>
       <AuthNavbar />
-      <div class='auth-container' >
+      <div className='auth-container' >
         <div id='login-form-container'>
           <div id='login-form-div'>
             <div id='logo-div' />
             <span id='login-text'>Log in to Stickr</span>
             <form id='login-form' onSubmit={handleSubmit}>
-              <input class="form-input"
+              <input className="form-input"
                 type='text'
                 name='username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder='Username' />
-              <input class="form-input"
+              <input className="form-input"
                 type='password'
                 name='password'
                 value={password}

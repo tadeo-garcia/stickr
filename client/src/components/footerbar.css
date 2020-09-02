@@ -48,7 +48,6 @@
   background-size: cover;
 }
 
-
 #twitter{
   height:20px;
   width:20px;
@@ -63,9 +62,7 @@
   background-size: cover;
 }
 
-
 #insta{
-  /* margin-right: -25px; */
   height:20px;
   width:20px;
   background-image:url('/pics/icons/igicong.png');
@@ -73,7 +70,6 @@
 }
 
 #insta:hover{
-  /* margin-right: -25px; */
   height:20px;
   width:20px;
   background-image:url('/pics/icons/igiconw.png');

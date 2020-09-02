@@ -14,7 +14,6 @@ const validateLogin = [
   check("password").exists(),
 ];
 
-
 router.get(
   "/",
   getCurrentUser,

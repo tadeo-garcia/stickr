@@ -10,7 +10,6 @@ export const setUser = (user) => {
   };
 };
 
-
 export const logoutUser = () => {
   return {
     type: LOGOUT_USER
@@ -61,14 +60,12 @@ export const logout = () => {
         'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
       },
     })
-    // res.data = await res.json();
     if (res.ok) {
       dispatch(logoutUser());
     }
     return res;
   }
 }
-
 
 export default function authReducer(state = {}, action) {
   switch (action.type) {
