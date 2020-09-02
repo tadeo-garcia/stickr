@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 
 const SET_USER = 'auth/SET_USER';
 const CREATE_USER = 'auth/CREATE_USER';
+const LOGOUT_USER = 'auth/LOGOUT_USER';
 
 export const setUser = (user) => {
   return {
@@ -14,6 +15,12 @@ export const createUser = (user) => {
   return {
     type: CREATE_USER,
     user
+  }
+}
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER
   }
 }
 
@@ -53,15 +60,30 @@ export const signup = (username, password, passwordConfirm) => {
   }
 }
 
+export const logout = () => {
+  return async dispatch => {
+    const res = await fetch('/api/session', {
+      method: 'delete',
+      headers: {
+        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+      },
+    })
+    // res.data = await res.json();
+    if (res.ok) {
+      return true;
+    }
+    return res;
+  }
+}
 
-// window.login = login;
-// for testing purposes
 
 export default function authReducer(state = {}, action) {
   switch (action.type) {
     case SET_USER:
       return action.user;
     case CREATE_USER:
+      return action.user;
+    case LOGOUT_USER:
       return action.user;
     default:
       return state;
