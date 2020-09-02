@@ -25,7 +25,7 @@ function HomePage() {
       <div>{Navbar}</div>
       <div className='main-container' >
         <div id='motto-div'>
-          <h1>Find your inspiration.</h1>
+          <h1 id='inspo'>Find your inspiration.</h1>
           <h2>Join the Stickr community, every artist around the world is welcome here. </h2>
           <Link to='/signup' id='login-button'>Start for free</Link>
         </div>
