@@ -1,7 +1,7 @@
 #modal-container{
-  position: fixed;
+  position: absolute;
   top: 42px;
-  right: 0px;
+  right: -75px;
   background-image: url('/pics/modal.png');
   background-size: cover;
   display:flex;
@@ -10,6 +10,15 @@
   width: 325px;
   margin-right: 50px;
   /* display: none; */
+}
+
+#hide-modal{
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  /* background-color: purple; */
 }
 
 #greetuser-div{

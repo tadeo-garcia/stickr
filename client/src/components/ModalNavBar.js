@@ -6,20 +6,26 @@ import LogoutModal from '../components/LogoutModal'
 
 function ModalNavbar() {
   const [displayModal, setDisplayModal] = useState(null)
-  const showModal = () => {
-    setDisplayModal(<LogoutModal hide={hideModal} />);
-  }
-  const hideModal = () => {
+  const hideModal = (e) => {
+    e.stopPropagation();
     setDisplayModal(null);
   }
+
+  const showModal = () => {
+    console.log('hello modal')
+    setDisplayModal(<LogoutModal hideModal={hideModal} />);
+  }
+
+  console.log(displayModal)
 
   return (
     <div id='modal-navbar-div'>
       <span><NavLink id='home-link' to='/'>stickr</NavLink></span>
-      <LogoutModal />
-      <div class="nav-icons-div">
+      <div className="nav-icons-div">
         <div id='cloud-icon' />
-        <div id='avatar-icon' onClick={e => showModal()} />
+        <div id='avatar-icon' onClick={e => showModal()} >
+          {displayModal}
+        </div>
       </div>
     </div>
   )

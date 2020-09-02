@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './logoutmodal.css';
 
 import { logout } from '../store/auth'
 
-export default function LogoutModal() {
+export default function LogoutModal({ hideModal }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const username = useSelector(state => state.auth.username);
   const num = Math.ceil(Math.random() * 7)
@@ -38,16 +39,20 @@ export default function LogoutModal() {
   const handleClick = e => {
     e.preventDefault();
     dispatch(logout())
-    window.location.reload();
+    history.push('/')
+    // window.location.reload();
   }
 
   return (
-    <div id="modal-container">
-      <div id='greetuser-div'>{usergreet}</div>
-      <div id='greetlanguage-div'>{languagegreet}</div>
-      <Link to='/uploadphoto' id='upload-link'> Upload your own photos</Link>
-      <span id='logout-span' onClick={handleClick}>Log out</span>
-    </div>
+    <>
+      <div onClick={hideModal} id='hide-modal'></div>
+      <div id="modal-container">
+        <div id='greetuser-div'>{usergreet}</div>
+        <div id='greetlanguage-div'>{languagegreet}</div>
+        <Link to='/uploadphoto' id='upload-link'> Upload your own photos</Link>
+        <span id='logout-span' onClick={handleClick}>Log out</span>
+      </div>
+    </>
   )
 }
 
