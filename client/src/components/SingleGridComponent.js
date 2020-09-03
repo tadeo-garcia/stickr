@@ -6,11 +6,11 @@ import './photofeed.css'
 const SingleGridComponent = ({ url, key }) => {
 
   const num1 = Math.ceil(Math.random() * 4)
-  const columnProp = 'grid-column'
+  // const columnProp = 'grid-column'
   const column = `w-${num1}`
   const num2 = Math.ceil(Math.random() * 4)
-  const rowProp = 'grid-row'
-  const row = `h-${num1}`
+  // const rowProp = 'grid-row'
+  const row = `h-${num2}`
 
   const style = {
     columnProp: column,
