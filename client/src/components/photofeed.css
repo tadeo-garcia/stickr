@@ -23,6 +23,7 @@
 
 .photo-grid-container{
   margin-top: 75px;
+  margin-bottom: 75px;
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 200px 500px;

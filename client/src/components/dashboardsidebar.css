@@ -5,3 +5,36 @@
   color: black;
   font-size: 30px;
 }
+
+#display-icon-div{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* width: 250px; */
+
+}
+
+#grid-icon{
+  margin: 0px 15px;
+  height: 32px;
+  width: 32px;
+  background-image: url('/pics/icons/gridicong.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+#grid-icon:hover{
+  background-image: url('/pics/icons/gridiconb.png');
+}
+
+#scroll-icon{
+  height: 32px;
+  width: 32px;
+  background-image: url('/pics/icons/scrollicong.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+#scroll-icon:hover{
+  background-image: url('/pics/icons/scrolliconb.png');
+}

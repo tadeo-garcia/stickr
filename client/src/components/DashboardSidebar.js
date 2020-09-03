@@ -5,9 +5,11 @@ function DashboardSidebar({ changeDisplayGrid, changeDisplayScroll }) {
 
   return (
     <div className='sidebar'>
-      <button onClick={changeDisplayGrid}>GRID LAYOUT</button>
-      <button onClick={changeDisplayScroll}>SCROLL LAYOUT</button>
-    </div>
+      <div id='display-icon-div'>
+        <div id='grid-icon' onClick={changeDisplayGrid} ></div>
+        <div id='scroll-icon' onClick={changeDisplayScroll} ></div>
+      </div>
+    </div >
   )
 }
 
