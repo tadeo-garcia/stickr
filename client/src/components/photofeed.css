@@ -4,7 +4,7 @@
   display:flex;
   grid-template-columns:auto;
   overflow-y:scroll;
- 
+  z-index: 0; 
 }
 
 .scroll-sticker{
@@ -29,6 +29,8 @@
   grid-auto-rows: 200px 500px;
   grid-gap: 10px;
   grid-auto-flow: dense;
+  z-index: 0; 
+
 }
 
 .photo-grid-item{
