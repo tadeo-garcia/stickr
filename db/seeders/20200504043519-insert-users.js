@@ -15,9 +15,9 @@ function r(o) {
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
-      r({ username: 'mkue', hashedPassword: createPassword(), aboutMe: null }),
-      r({ username: 'horfe', hashedPassword: createPassword(), aboutMe: null }),
-      r({ username: 'saieo', hashedPassword: createPassword(), aboutMe: null }),
+      r({ username: 'mkue', hashedPassword: createPassword(), aboutMe: 'writer from the bay area' }),
+      r({ username: 'horfe', hashedPassword: createPassword(), aboutMe: 'je suis de paris' }),
+      r({ username: 'bicer', hashedPassword: createPassword(), aboutMe: 'escritor de méxico' }),
     ]);
   },
 

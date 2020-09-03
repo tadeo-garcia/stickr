@@ -6,8 +6,8 @@ import './photofeed.css'
 function PhotoGridComponent() {
   let photoUrls = []
   const fetchPhotos = () => {
-    for (let i = 20; i <= 43; i++) {
-      const url = `/pics/users/1/sticker${i}.png`
+    for (let i = 1; i <= 34; i++) {
+      const url = `/pics/users/sticker${i}.png`
 
       photoUrls.push(url)
     }
