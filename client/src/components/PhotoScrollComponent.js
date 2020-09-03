@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import SingleGridComponent from './SingleGridComponent.js';
+import SingleScrollComponent from './SingleScrollComponent';
 import './photofeed.css'
 
-function PhotoGridComponent() {
+
+const PhotoScrollComponent = () => {
+  const [loaded, setLoaded] = useState(false);
+
   let photoUrls = []
   const fetchPhotos = () => {
-    for (let i = 20; i <= 43; i++) {
+    for (let i = 20; i <= 44; i++) {
       const url = `/pics/users/1/sticker${i}.png`
 
       photoUrls.push(url)
@@ -16,16 +19,12 @@ function PhotoGridComponent() {
   fetchPhotos();
 
   return (
-    <div className="photo-grid-container">
+    <div className="photo-scroll">
       {photoUrls.map((url, index) => (
-        <div className='photo-grid-item'>
-          <div className='photo'>
-            <SingleGridComponent url={url} index={index} />
-          </div>
-        </div>
+        <SingleScrollComponent url={url} index={index} />
       ))}
     </div>
   );
 }
 
-export default PhotoGridComponent;
+export default PhotoScrollComponent;
