@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './loginnavbar.css';
+import './navbar.css';
 
-function LoginNavbar() {
+function AuthNavbar() {
 
   return (
-    <div class='navbar-div'>
+    <div id='basic-navbar-div'>
       <span><Link id='home-link' to='/'>stickr</Link></span>
     </div>
   )
 };
 
-export default LoginNavbar;
+export default AuthNavbar;

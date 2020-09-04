@@ -4,8 +4,8 @@ import { login } from '../store/auth';
 import { Redirect, Link } from 'react-router-dom';
 import './authpage.css';
 
-import LoginNavbar from '../components/LoginNavBar';
-
+import AuthNavbar from '../components/AuthNavBar';
+import FooterBar from '../components/FooterBar';
 
 function LoginPage() {
   const [username, setUsername] = useState();
@@ -25,35 +25,35 @@ function LoginPage() {
 
   if (currentUserId) return <Redirect to='/' />;
 
-
   return (
     <>
-      <LoginNavbar />
-      <div class='main-container' >
+      <AuthNavbar />
+      <div className='auth-container' >
         <div id='login-form-container'>
           <div id='login-form-div'>
             <div id='logo-div' />
             <span id='login-text'>Log in to Stickr</span>
             <form id='login-form' onSubmit={handleSubmit}>
-              <input class="form-input"
+              <input className="form-input"
                 type='text'
                 name='username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder='Username' />
-              <input class="form-input"
+              <input className="form-input"
                 type='password'
                 name='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Password' />
-              <button id='login-button' type='submit'>Sign in</button>
+              <button id='form-button' type='submit'>Sign in</button>
             </form>
             <span onClick={handleSubmitDemo} id='demo'>Login with a demo user?</span>
             <span id='member-text'>Not a Stickr member?
             <Link to="/signup" id='demo'> Sign up here.</Link></span>
           </div>
         </div>
+        <FooterBar />
       </div >
     </>
   )

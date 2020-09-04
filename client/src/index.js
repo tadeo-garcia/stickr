@@ -19,7 +19,6 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
 }
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
