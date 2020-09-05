@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link, useParams } from 'react-router-dom';
-import { getPhoto } from '../store/photos'
+import { getPhoto } from '../store/photos';
+import { getUser } from '../store/users';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
 import SingleScrollComponent from '../components/SingleScrollComponent'
@@ -11,6 +12,8 @@ import './singlephotopage.css';
 function SinglePhotoPage() {
   const dispatch = useDispatch();
   let { id } = useParams();
+  let { user } = useParams();
+
 
 
   useEffect(() => {
@@ -29,7 +32,7 @@ function SinglePhotoPage() {
   if (!photo) {
     return null;
   }
-
+  console.log(photo.User);
   return (
     <>
       <ModalNavbar />
@@ -42,7 +45,8 @@ function SinglePhotoPage() {
             <SingleScrollComponent url={photo.url} ></SingleScrollComponent>
           </div>
           <div className='content-div'>
-            <h4>Description etc goes here.</h4>
+            <h4>{photo.description}</h4>
+            <h4>created by : {photo.User.username}</h4>
           </div>
         </div >
       </div>

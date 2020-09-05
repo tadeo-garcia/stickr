@@ -7,13 +7,13 @@ const router = express.Router();
 
 
 router.get('/', handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const photos = await Photo.findAll()
+  const photos = await Photo.findAll({ include: User })
   res.json({ photos })
 }))
 
 router.get('/:id', handleValidationErrors, asyncHandler(async (req, res, next) => {
   const photoId = req.params.id
-  const photo = await Photo.findByPk(photoId)
+  const photo = await Photo.findByPk(photoId, { include: User })
 
   res.json({ photo })
 }))

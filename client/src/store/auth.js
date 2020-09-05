@@ -2,7 +2,8 @@ import Cookies from 'js-cookie';
 
 const SET_USER = 'auth/SET_USER';
 const LOGOUT_USER = 'auth/LOGOUT_USER';
-const LOAD_USERS = 'aut/LOAD_USERS'
+
+
 
 export const setUser = (user) => {
   return {
@@ -11,12 +12,6 @@ export const setUser = (user) => {
   };
 };
 
-export const loadUsers = (users) => {
-  return {
-    type: LOAD_USERS,
-    users
-  }
-}
 
 export const logoutUser = () => {
   return {
@@ -60,18 +55,7 @@ export const signup = (username, password, passwordConfirm) => {
   }
 }
 
-export const getUsers = () => {
-  return async dispatch => {
-    const res = await fetch('/api/users', {
-      method: 'get'
-    })
-    res.data = await res.json();
-    if (res.ok) {
-      dispatch(loadUsers(res.data.users))
-    }
-    return res;
-  }
-}
+
 
 export const logout = () => {
   return async dispatch => {
@@ -92,12 +76,6 @@ export default function authReducer(state = {}, action) {
   switch (action.type) {
     case SET_USER:
       return action.user;
-    case LOAD_USERS:
-      let newState = {};
-      action.users.forEach(user => {
-        newState[user.id] = user
-      })
-      return newState;
     case LOGOUT_USER:
       return {};
     default:

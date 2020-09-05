@@ -26,8 +26,8 @@ const PhotoScrollComponent = () => {
         {Object.values(photoList).map((photo, index) => {
           let link = `/user/${photo.userId}/photo/${photo.id}`
           return (
-            < Link to={link}>
-              <SingleScrollComponent url={photo.url} key={index} />
+            < Link to={link} key={index}>
+              <SingleScrollComponent url={photo.url} />
             </Link>
           )
         }

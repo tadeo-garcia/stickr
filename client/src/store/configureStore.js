@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 
 import photos from './photos'
 import auth from './auth';
+import users from './users';
 
 const rootReducer = combineReducers({
-  auth, photos
+  auth, photos, users
 });
 
 let storeEnhancer;

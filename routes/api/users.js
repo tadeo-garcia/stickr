@@ -27,6 +27,12 @@ router.get('/', asyncHandler(async function (_req, res, _next) {
   res.json({ users });
 }));
 
+router.get('/:id', asyncHandler(async function (_req, res, _next) {
+  const userId = req.params.id;
+  const users = await User.findByPk(userId)
+  res.json({ user });
+}));
+
 
 router.post(
   "/",
