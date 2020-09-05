@@ -44,3 +44,4 @@ export default function photosReducer(state = {}, action) {
       return state;
   }
 }
+

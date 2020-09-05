@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { getPhotos } from '../store/photos'
 import SingleScrollComponent from './SingleScrollComponent';
 import './photofeed.css'
 
 
 const PhotoScrollComponent = () => {
-  let photoUrls = []
-  const fetchPhotos = () => {
-    for (let i = 1; i <= 33; i++) {
-      const url = `/pics/users/sticker${i}.png`
+  const dispatch = useDispatch();
 
-      photoUrls.push(url)
-    }
+  useEffect(() => {
+    dispatch(getPhotos())
+  }, [])
+
+  const photoList = useSelector(state => state.photos)
+
+
+  if (!photoList) {
+    return null
   }
-
-  fetchPhotos();
 
   return (
     <div className="photo-scroll">
-      {photoUrls.map((url, index) => (
-        <SingleScrollComponent url={url} index={index} />
+      {Object.values(photoList).map((photo, index) => (
+        <SingleScrollComponent url={photo.url} key={index} />
       ))}
     </div>
   );
