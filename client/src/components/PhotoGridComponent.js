@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhotos } from '../store/photos'
 import { getUsers } from '../store/auth'
@@ -22,16 +23,21 @@ function PhotoGridComponent() {
   }
 
   return (
-
     <div className="photo-grid-container">
-      {Object.values(photoList).map((photo, index) => (
-        <div className='photo-grid-item' key={index}>
-          <div className='photo'>
-            <SingleGridComponent url={photo.url} />
-          </div>
-        </div>
-      ))}
-    </div>
+      {Object.values(photoList).map((photo, index) => {
+        let link = `/user/${photo.userId}/photo/${photo.id}`
+        return (
+          < Link to={link}>
+            <div className='photo-grid-item' key={index}>
+              <div className='photo'>
+                <SingleGridComponent url={photo.url} />
+              </div>
+            </div>
+          </Link>
+        )
+      }
+      )}
+    </div >
   );
 }
 
