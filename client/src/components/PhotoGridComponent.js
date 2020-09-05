@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhotos } from '../store/photos'
+import { getUsers } from '../store/auth'
 import SingleGridComponent from './SingleGridComponent.js';
 import './photofeed.css'
 
@@ -9,9 +10,11 @@ function PhotoGridComponent() {
 
   useEffect(() => {
     dispatch(getPhotos())
+    // dispatch(getUsers())
   }, [])
 
-  const photoList = useSelector(state => state.photos)
+  const photoList = useSelector(state => state.photos.list)
+  const usersList = useSelector(state => state.users)
 
 
   if (!photoList) {

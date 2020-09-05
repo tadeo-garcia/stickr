@@ -9,10 +9,10 @@ export const loadPhotos = (photos) => {
   };
 };
 
-export const loadPhoto = (id) => {
+export const loadPhoto = (photo) => {
   return {
     type: LOAD_PHOTO,
-    id
+    photo
   }
 }
 
@@ -29,17 +29,29 @@ export const getPhotos = () => {
   }
 }
 
+export const getPhoto = (id) => {
+  return async dispatch => {
+    const res = await fetch(`/api/photos/${id}`)
+    res.data = await res.json()
+    if (res.ok) {
+      dispatch(loadPhoto(res.data.photo))
+    }
+    return res;
+  }
+}
+
 
 export default function photosReducer(state = {}, action) {
   switch (action.type) {
     case LOAD_PHOTOS:
-      let newState = {};
-      action.photos.forEach(photo => {
-        newState[photo.id] = photo
-      })
-      return newState;
+      // let newState = { ...state, list: action.photos };
+      // action.photos.forEach(photo => {
+      //   newState[photo.id] = photo
+      // })
+      return { ...state, list: action.photos };
     case LOAD_PHOTO:
-      return {};
+
+      return { ...state, single: action.photo };
     default:
       return state;
   }

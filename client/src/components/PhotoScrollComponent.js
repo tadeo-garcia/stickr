@@ -12,7 +12,7 @@ const PhotoScrollComponent = () => {
     dispatch(getPhotos())
   }, [])
 
-  const photoList = useSelector(state => state.photos)
+  const photoList = useSelector(state => state.photos.list)
 
 
   if (!photoList) {

@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require("express-validator");
 
-const { User } = require("../../db/models");
+const { User, Photo } = require("../../db/models");
 const { handleValidationErrors } = require("../util/validation");
 const { generateToken } = require("../util/auth");
 const {
@@ -23,10 +23,9 @@ const validateSignup = [
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (_req, res, _next) {
-  const users = await User.findAll();
+  const users = await User.findAll()
   res.json({ users });
 }));
-
 
 
 router.post(

@@ -3,10 +3,10 @@ import './photofeed.css'
 
 
 
-const SingleScrollComponent = ({ url, key }) => {
+const SingleScrollComponent = ({ url }) => {
   return (
 
-    <img src={url} alt='sticker' key={key} class='scroll-sticker' />
+    <img src={url} alt='sticker' className='scroll-sticker' />
 
   );
 }
