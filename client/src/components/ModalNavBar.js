@@ -18,7 +18,7 @@ function ModalNavbar() {
     <div id='modal-navbar-div'>
       <span><NavLink id='home-link' to='/'>stickr</NavLink></span>
       <div className="nav-icons-div">
-        <div id='cloud-icon' />
+        <NavLink to='/upload'><div id='cloud-icon' /></NavLink>
         <div id='avatar-icon' onClick={e => showModal()} >
           {displayModal}
         </div>
