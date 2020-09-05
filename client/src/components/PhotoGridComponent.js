@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { getPhotos } from '../store/photos'
 import SingleGridComponent from './SingleGridComponent.js';
 import './photofeed.css'
 
 function PhotoGridComponent() {
-  let photoUrls = []
-  const fetchPhotos = () => {
-    for (let i = 1; i <= 34; i++) {
-      const url = `/pics/users/sticker${i}.png`
+  const dispatch = useDispatch();
+  // const [loaded, setLoaded] = useState(false);
+  // const [photos, setPhotos] = useState([])
 
-      photoUrls.push(url)
-    }
+
+  useEffect(() => {
+    dispatch(getPhotos())
+  }, [])
+
+
+
+  const photoList = useSelector(state => state.photos)
+
+
+  let photoArray = Object.values(photoList);
+  photoArray.forEach(photo => console.log(photo.url))
+
+  if (!photoList) {
+    return null
   }
 
-  fetchPhotos();
-
   return (
+
     <div className="photo-grid-container">
-      {photoUrls.map((url, index) => (
-        <div className='photo-grid-item'>
+      {Object.values(photoList).map((photo, index) => (
+        <div className='photo-grid-item' key={index}>
           <div className='photo'>
-            <SingleGridComponent url={url} index={index} />
+            <SingleGridComponent url={photo.url} />
           </div>
         </div>
       ))}

@@ -6,7 +6,7 @@ import './photofeed.css'
 const PhotoScrollComponent = () => {
   let photoUrls = []
   const fetchPhotos = () => {
-    for (let i = 1; i <= 34; i++) {
+    for (let i = 1; i <= 33; i++) {
       const url = `/pics/users/sticker${i}.png`
 
       photoUrls.push(url)

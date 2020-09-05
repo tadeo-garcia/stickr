@@ -8,6 +8,8 @@ import PhotoGridComponent from '../components/PhotoGridComponent'
 import DashboardSidebar from '../components/DashboardSidebar'
 import './dashboardpage.css';
 
+
+
 function DashboardPage() {
   const [displayFeed, setDisplayFeed] = useState(<PhotoGridComponent />)
   const currentUserId = useSelector(state => state.auth.id);

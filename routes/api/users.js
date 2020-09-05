@@ -27,6 +27,8 @@ router.get('/', asyncHandler(async function (_req, res, _next) {
   res.json({ users });
 }));
 
+
+
 router.post(
   "/",
   validateSignup,
