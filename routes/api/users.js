@@ -27,12 +27,24 @@ router.get('/', asyncHandler(async function (_req, res, _next) {
   res.json({ users });
 }));
 
-router.get('/:id', asyncHandler(async function (_req, res, _next) {
-  const userId = req.params.id;
-  const users = await User.findByPk(userId)
-  res.json({ user });
-}));
+// router.get('/:id', asyncHandler(async function (_req, res, _next) {
+//   const userId = req.params.id;
+//   const users = await User.findByPk(userId)
+//   res.json({ user });
+// }));
 
+router.get('/:id/photos', asyncHandler(async function (req, res, _next) {
+
+  console.log('~~~inside /:id/photos~~~')
+  const userId = req.params.id;
+  console.log(`~~~~~~${userId}~~~INSIDE :ID/PHOTOS~~~`)
+  const photos = await Photo.findAll({
+    where: {
+      userId
+    }
+  })
+  res.json({ photos });
+}));
 
 router.post(
   "/",

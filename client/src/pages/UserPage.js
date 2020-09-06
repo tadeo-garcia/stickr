@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect, useParams } from 'react-router-dom';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
-import PhotoScrollComponent from '../components/PhotoScrollComponent'
-import PhotoGridComponent from '../components/PhotoGridComponent'
+import PhotoScrollUserComponent from '../components/PhotoScrollUserComponent'
+import PhotoGridUserComponent from '../components/PhotoGridUserComponent'
 import DashboardSidebar from '../components/DashboardSidebar'
+import { getPhotosByUserId } from '../store/photos'
 import './userpage.css';
 
 
 
 function UserPage() {
-  const [displayFeed, setDisplayFeed] = useState(<PhotoGridComponent />)
+  const [displayFeed, setDisplayFeed] = useState(<PhotoGridUserComponent />)
   const currentUserId = useSelector(state => state.auth.id);
+
   if (!currentUserId) return <Redirect to='/' />;
 
   const changeDisplayScroll = () => {
-    setDisplayFeed(<PhotoScrollComponent />)
+    setDisplayFeed(<PhotoScrollUserComponent />)
   }
 
   const changeDisplayGrid = () => {
-    setDisplayFeed(<PhotoGridComponent />)
+    setDisplayFeed(<PhotoGridUserComponent />)
   }
+
 
 
   return (

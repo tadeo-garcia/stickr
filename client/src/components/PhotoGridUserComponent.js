@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { getPhotos } from '../store/photos'
+import { getPhotosByUserId } from '../store/photos'
 import { getUsers } from '../store/users'
 import SingleGridComponent from './SingleGridComponent.js';
 import './photofeed.css'
 
-function PhotoGridComponent() {
+function PhotoGridUserComponent() {
   const dispatch = useDispatch();
-
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getPhotos())
+    dispatch(getPhotosByUserId(id))
     dispatch(getUsers())
   }, [])
 
-  const photoList = useSelector(state => state.photos.list)
+  const userPhotoList = useSelector(state => state.photos.users)
   const usersList = useSelector(state => state.users)
 
-
-  if (!photoList) {
+  if (!userPhotoList) {
     return null
   }
 
@@ -27,7 +26,7 @@ function PhotoGridComponent() {
 
   return (
     <div className="photo-grid-container">
-      {Object.values(photoList).map((photo, index) => {
+      {Object.values(userPhotoList).map((photo, index) => {
         let link = `/user/${photo.userId}/photo/${photo.id}`
         return (
           <a href={link} key={index}>
@@ -44,4 +43,4 @@ function PhotoGridComponent() {
   );
 }
 
-export default PhotoGridComponent;
+export default PhotoGridUserComponent;

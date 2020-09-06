@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link, useParams } from 'react-router-dom';
 import { getPhoto } from '../store/photos';
-import { getUser } from '../store/users';
+// import { getUser } from '../store/users';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
 import SingleScrollComponent from '../components/SingleScrollComponent'
@@ -12,7 +12,6 @@ import './singlephotopage.css';
 function SinglePhotoPage() {
   const dispatch = useDispatch();
   let { id } = useParams();
-  let { user } = useParams();
 
 
 

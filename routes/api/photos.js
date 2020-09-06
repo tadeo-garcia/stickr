@@ -6,8 +6,6 @@ const { Photo, User } = require("../../db/models");
 const router = express.Router();
 
 
-
-
 router.get('/', handleValidationErrors, asyncHandler(async (req, res, next) => {
   const photos = await Photo.findAll({ include: User })
   res.json({ photos })

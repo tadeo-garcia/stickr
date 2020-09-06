@@ -26,9 +26,9 @@ function DashboardSidebar({ changeDisplayGrid, changeDisplayScroll }) {
         {Object.values(usersList).map((user, index) => {
         let link = `/user/${user.id}`
         return (
-          <Link id='user-link' to={link} key={index} >
+          <a id='user-link' href={link} key={index} >
             {user.username}
-          </Link>
+          </a>
         )
       })}
       </div>
