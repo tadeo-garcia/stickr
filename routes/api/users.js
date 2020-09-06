@@ -23,7 +23,7 @@ const validateSignup = [
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (_req, res, _next) {
-  const users = await User.findAll()
+  const users = await User.findAll({})
   res.json({ users });
 }));
 

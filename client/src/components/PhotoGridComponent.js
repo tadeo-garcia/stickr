@@ -18,18 +18,18 @@ function PhotoGridComponent() {
   const usersList = useSelector(state => state.users)
   const state = useSelector(state => state)
 
-  // console.log(state)
-
   if (!photoList) {
     return null
   }
+
+  // console.log(photoList)
 
   return (
     <div className="photo-grid-container">
       {Object.values(photoList).map((photo, index) => {
         let link = `/user/${photo.userId}/photo/${photo.id}`
         return (
-          < Link to={link} key={index}>
+          <Link to={link} key={index}>
             <div className='photo-grid-item' >
               <div className='photo'>
                 <SingleGridComponent url={photo.url} />

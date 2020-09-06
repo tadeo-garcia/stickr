@@ -32,7 +32,7 @@ function SinglePhotoPage() {
   if (!photo) {
     return null;
   }
-  console.log(photo.User);
+
   return (
     <>
       <ModalNavbar />

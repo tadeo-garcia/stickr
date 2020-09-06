@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
 import PhotoScrollComponent from '../components/PhotoScrollComponent'
 import PhotoGridComponent from '../components/PhotoGridComponent'
 import DashboardSidebar from '../components/DashboardSidebar'
-import './dashboardpage.css';
+import './userpage.css';
 
 
 
-function DashboardPage() {
+function UserPage() {
   const [displayFeed, setDisplayFeed] = useState(<PhotoGridComponent />)
   const currentUserId = useSelector(state => state.auth.id);
-
-
   if (!currentUserId) return <Redirect to='/' />;
 
   const changeDisplayScroll = () => {
@@ -43,4 +41,4 @@ function DashboardPage() {
   )
 };
 
-export default DashboardPage;
+export default UserPage;

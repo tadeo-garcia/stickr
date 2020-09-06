@@ -20,9 +20,18 @@ router.get('/:id', handleValidationErrors, asyncHandler(async (req, res, next) =
   res.json({ photo })
 }))
 
+router.delete('/:id', asyncHandler(async (req, res, nex) => {
+
+  const photoId = req.params.id;
+  const photoToDelete = await Photo.findByPk(photoId);
+  await photoToDelete[0].destroy();
+  res.json({ message: 'success' })
+
+}))
+
 router.post('/', singleMulterUpload('photo'), async (req, res) => {
-  const photoData = req.body;
-  photoData.image = await singlePublicFileUpload(req.file);
+  const userData = req.body;
+  userData.photo = await singlePublicFileUpload(req.file);
   const photo = new Photo(photoData);
   await photo.save();
   res.json(photo);

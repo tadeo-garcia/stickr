@@ -1,5 +1,6 @@
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const LOAD_PHOTO = 'photos/LOAD_PHOTO';
+const RECEIVE_PHOTO = '/photos/RECEIVE_PHOTO';
 
 
 export const loadPhotos = (photos) => {
