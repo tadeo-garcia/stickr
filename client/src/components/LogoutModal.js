@@ -47,7 +47,7 @@ export default function LogoutModal({ hideModal }) {
       <div id="modal-container">
         <div id='greetuser-div'>{usergreet}</div>
         <div id='greetlanguage-div'>{languagegreet}</div>
-        <Link to='/uploadphoto' id='upload-link'> Upload your own photos</Link>
+        <Link to='/upload' id='upload-link'> Upload your own photos</Link>
         <span id='logout-span' onClick={handleClick}>Log out</span>
       </div>
     </>

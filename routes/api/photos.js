@@ -19,10 +19,18 @@ router.get('/:id', handleValidationErrors, asyncHandler(async (req, res, next) =
 }))
 
 router.delete('/:id', asyncHandler(async (req, res, nex) => {
+  console.log('~~~~~~~inside API/ROUTER DELETE~~~~~~~~~')
 
   const photoId = req.params.id;
   const photoToDelete = await Photo.findByPk(photoId);
-  await photoToDelete[0].destroy();
+  if (!photoToDelete) {
+    const err = new Error("Photo not found!");
+    err.status = 404;
+    next(err);
+    return;
+  }
+
+  await photoToDelete.destroy();
   res.json({ message: 'success' })
 
 }))

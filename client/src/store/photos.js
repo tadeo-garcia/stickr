@@ -1,8 +1,10 @@
+import Cookies from 'js-cookie';
+
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const LOAD_PHOTOS_BY_USER = 'photos/LOAD_PHOTOS_BY_USER';
 const LOAD_PHOTO = 'photos/LOAD_PHOTO';
+const DELETE_PHOTO = 'photos/DELETE_PHOTO'
 // const RECEIVE_PHOTO = '/photos/RECEIVE_PHOTO';
-
 
 export const loadPhotos = (photos) => {
   return {
@@ -11,6 +13,13 @@ export const loadPhotos = (photos) => {
   };
 };
 
+export const loadPhotosByUser = (photos) => {
+  return {
+    type: LOAD_PHOTOS_BY_USER,
+    photos
+  }
+}
+
 export const loadPhoto = (photo) => {
   return {
     type: LOAD_PHOTO,
@@ -18,10 +27,11 @@ export const loadPhoto = (photo) => {
   }
 }
 
-const loadPhotosByUser = (photos) => {
+export const deletePhoto = (photoId) => {
   return {
-    type: LOAD_PHOTOS_BY_USER,
-    photos
+    type: DELETE_PHOTO,
+    photoId
+
   }
 }
 
@@ -60,6 +70,21 @@ export const getPhotosByUserId = (id) => {
   }
 }
 
+export const deletePhotoById = (id) => {
+  return async dispatch => {
+    const res = await fetch(`/api/photos/${id}`, {
+      method: 'delete',
+      headers: {
+        'XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
+      }
+    })
+    res.data = await res.json()
+    if (!res.ok) throw res;
+    if (res.ok) {
+      dispatch(deletePhoto(id))
+    }
+  }
+}
 
 export default function photosReducer(state = {}, action) {
   switch (action.type) {
@@ -69,6 +94,12 @@ export default function photosReducer(state = {}, action) {
       return { ...state, single: action.photo };
     case LOAD_PHOTOS_BY_USER:
       return { ...state, users: action.photos }
+    case DELETE_PHOTO:
+      console.log('~~~inside photos reducer~~~~')
+      console.log(`${action.photoId}`)
+      let newState = state.users.filter((data, i) => (i !== (action.photoId - 1)))
+      console.log(newState)
+      return newState
     default:
       return state;
   }
