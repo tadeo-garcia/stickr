@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { a } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhotos } from '../store/photos'
 import SingleScrollComponent from './SingleScrollComponent';
@@ -11,7 +10,7 @@ const PhotoScrollComponent = () => {
 
   useEffect(() => {
     dispatch(getPhotos())
-  }, [])
+  }, [dispatch])
 
   const photoList = useSelector(state => state.photos.list)
 

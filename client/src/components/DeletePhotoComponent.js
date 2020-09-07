@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { deletePhotoById } from '../store/photos';
 import './deletephoto.css';
 
@@ -11,9 +11,8 @@ function DeletePhotoButton({ currentUserId, photoId }) {
 
   const handleDeletePhoto = e => {
     e.preventDefault();
-    console.log('inside handle delete')
     dispatch(deletePhotoById(photoId))
-    history.push(`/user/${currentUserId}`)
+    history.push(`/user/dashboard`)
   }
 
 

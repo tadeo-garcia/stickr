@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
 import PhotoScrollComponent from '../components/PhotoScrollComponent'

@@ -21,6 +21,7 @@
     "debug": "^4.1.1",
     "express": "^4.16.4",
     "express-async-handler": "^1.1.4",
+    "express-fileupload": "^1.2.0",
     "express-validator": "^6.4.1",
     "helmet": "^3.22.0",
     "http-errors": "~1.6.3",

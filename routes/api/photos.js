@@ -1,5 +1,6 @@
 const { singlePublicFileUpload, singleMulterUpload } = require('../util/awsS3')
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const asyncHandler = require('express-async-handler');
 const { handleValidationErrors } = require("../util/validation");
 const { Photo, User } = require("../../db/models");
@@ -19,7 +20,6 @@ router.get('/:id', handleValidationErrors, asyncHandler(async (req, res, next) =
 }))
 
 router.delete('/:id', asyncHandler(async (req, res, nex) => {
-  console.log('~~~~~~~inside API/ROUTER DELETE~~~~~~~~~')
 
   const photoId = req.params.id;
   const photoToDelete = await Photo.findByPk(photoId);

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhotosByUserId } from '../store/photos'
 import { getUsers } from '../store/users'
@@ -13,16 +13,14 @@ function PhotoGridUserComponent() {
   useEffect(() => {
     dispatch(getPhotosByUserId(id))
     dispatch(getUsers())
-  }, [])
+  }, [dispatch])
 
   const userPhotoList = useSelector(state => state.photos.users)
-  const usersList = useSelector(state => state.users)
 
   if (!userPhotoList) {
     return null
   }
 
-  // console.log(photoList)
 
   return (
     <div className="photo-grid-container">

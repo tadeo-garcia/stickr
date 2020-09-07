@@ -14,7 +14,7 @@ function SinglePhotoPage() {
 
   useEffect(() => {
     dispatch(getPhoto(id))
-  }, []);
+  }, [dispatch]);
 
   const photo = useSelector(state => state.photos.single)
   const currentUserId = useSelector(state => state.auth.id);
@@ -25,7 +25,6 @@ function SinglePhotoPage() {
   if (!photo) return null;
 
   const photoOwner = (photo.User.id === currentUserId);
-  console.log(photoOwner)
 
 
   return (

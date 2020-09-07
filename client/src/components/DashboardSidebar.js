@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getUsers } from '../store/users';
 import './dashboardsidebar.css'
 
@@ -8,7 +7,7 @@ function DashboardSidebar({ changeDisplayGrid, changeDisplayScroll }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers())
-  }, [])
+  }, [dispatch])
 
   const usersList = useSelector(state => state.users)
 
