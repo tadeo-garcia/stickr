@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getPhotos } from '../store/photos'
 import SingleScrollComponent from './SingleScrollComponent';
@@ -11,7 +10,7 @@ const PhotoScrollComponent = () => {
 
   useEffect(() => {
     dispatch(getPhotos())
-  }, [])
+  }, [dispatch])
 
   const photoList = useSelector(state => state.photos.list)
 
@@ -26,9 +25,9 @@ const PhotoScrollComponent = () => {
         {Object.values(photoList).map((photo, index) => {
           let link = `/user/${photo.userId}/photo/${photo.id}`
           return (
-            < Link to={link} key={index}>
+            < a href={link} key={index}>
               <SingleScrollComponent url={photo.url} />
-            </Link>
+            </a>
           )
         }
 

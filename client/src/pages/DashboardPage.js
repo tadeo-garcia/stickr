@@ -13,6 +13,8 @@ import './dashboardpage.css';
 function DashboardPage() {
   const [displayFeed, setDisplayFeed] = useState(<PhotoGridComponent />)
   const currentUserId = useSelector(state => state.auth.id);
+
+
   if (!currentUserId) return <Redirect to='/' />;
 
   const changeDisplayScroll = () => {

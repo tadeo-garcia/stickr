@@ -20,7 +20,7 @@ function LoginPage() {
 
   const handleSubmitDemo = e => {
     e.preventDefault();
-    dispatch(login('mkue', 'password'))
+    dispatch(login('horfe', 'password'))
   }
 
   if (currentUserId) return <Redirect to='/' />;

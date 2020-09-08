@@ -23,16 +23,26 @@ const validateSignup = [
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (_req, res, _next) {
-  const users = await User.findAll()
+  const users = await User.findAll({})
   res.json({ users });
 }));
 
-router.get('/:id', asyncHandler(async function (_req, res, _next) {
-  const userId = req.params.id;
-  const users = await User.findByPk(userId)
-  res.json({ user });
-}));
+// router.get('/:id', asyncHandler(async function (_req, res, _next) {
+//   const userId = req.params.id;
+//   const users = await User.findByPk(userId)
+//   res.json({ user });
+// }));
 
+router.get('/:id/photos', asyncHandler(async function (req, res, _next) {
+
+  const userId = req.params.id;
+  const photos = await Photo.findAll({
+    where: {
+      userId
+    }
+  })
+  res.json({ photos });
+}));
 
 router.post(
   "/",

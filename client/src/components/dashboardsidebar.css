@@ -1,6 +1,6 @@
 .sidebar{
-  display:flex;
-  flex-direction: column;
+  display:grid;
+  grid-template-rows: 65px 9fr;
   margin-top: 75px;
   color: black;
   font-size: 30px;
@@ -9,8 +9,6 @@
 #display-icon-div{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
-  /* width: 250px; */
 
 }
 
@@ -37,4 +35,19 @@
 
 #scroll-icon:hover{
   background-image: url('/pics/icons/scrolliconb.png');
+}
+
+#users-link-div{
+  grid-area: "link-div";
+  display:flex;
+  flex-direction: column;
+  margin: 0px 15px;
+  color: gray;
+  
+}
+
+#user-link{
+  color: rgb(44, 44, 44);
+  text-decoration: none;
+  cursor: pointer;
 }

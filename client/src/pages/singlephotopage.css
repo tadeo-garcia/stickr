@@ -3,8 +3,6 @@
   justify-content: center;
   align-content: center;
   overflow: auto;
-  /* background-color: rgb(53, 53, 53); */
-
 }
 
 .photo-container {
@@ -16,8 +14,6 @@
   align-items: center;
   background-color: white;
   background-color: rgb(36, 36, 36);
-
-
 }
 
 #link-div{
@@ -25,7 +21,7 @@
 }
 
 #dashboard-link{
-  position:absolute;
+  position:relative;
   margin-top: 55px;
   margin-left: 75px;
   font-size: 24px;
@@ -35,7 +31,6 @@
 
 .photo-div{
   position: relative;
-  /* margin-bottom: 50px; */
 }
 
 .content-div{

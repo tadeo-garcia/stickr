@@ -1,0 +1,28 @@
+.body-container{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'columnA columnB';
+  margin-top: 150px;
+  width:80%;
+  height: inherit;
+  background-color: white;
+  /* overflow:auto; */
+  /* margin: auto; */
+  
+}
+
+.aboutme-div{
+  display:flex;
+  flex-direction: column;
+}
+
+h2{
+  color: black;
+}

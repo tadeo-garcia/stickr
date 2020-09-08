@@ -21,7 +21,7 @@ function SignupPage() {
 
   const handleSubmitDemo = e => {
     e.preventDefault();
-    dispatch(login('mkue', 'password'))
+    dispatch(login('tobie', 'password'))
   }
 
   if (currentUserId) return <Redirect to='/' />;

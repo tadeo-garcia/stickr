@@ -48,7 +48,7 @@ export default function usersReducer(state = {}, action) {
       // action.photos.forEach(photo => {
       //   newState[photo.id] = photo
       // })
-      return { ...state, list: action.users };
+      return action.users;
     case LOAD_USER:
 
       return { ...state, single: action.user };

@@ -2,6 +2,7 @@ const cors = require('cors');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser')
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const helmet = require('helmet');
 const path = require('path');
 const logger = require('morgan');
@@ -11,6 +12,7 @@ const { ValidationError } = require("sequelize");
 const { AuthenticationError } = require('./routes/util/auth');
 
 const app = express();
+app.use(fileUpload());
 
 app.use(logger('dev'));
 app.use(express.json());
