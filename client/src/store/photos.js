@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const LOAD_PHOTOS_BY_USER = 'photos/LOAD_PHOTOS_BY_USER';
 const LOAD_PHOTO = 'photos/LOAD_PHOTO';
 const DELETE_PHOTO = 'photos/DELETE_PHOTO'
-// const RECEIVE_PHOTO = '/photos/RECEIVE_PHOTO';
+const RECEIVE_PHOTO = '/photos/RECEIVE_PHOTO';
 
 export const loadPhotos = (photos) => {
   return {
@@ -32,6 +33,13 @@ export const deletePhoto = (photoId) => {
     type: DELETE_PHOTO,
     photoId
 
+  }
+}
+
+export const uploadPhoto = (newPhoto) => {
+  return {
+    type: RECEIVE_PHOTO,
+    newPhoto
   }
 }
 
@@ -86,6 +94,31 @@ export const deletePhotoById = (id) => {
   }
 }
 
+export const uploadSinglePhoto = photo => async dispatch => {
+  const { description, file, userId } = photo;
+  const formData = new FormData();
+  formData.append('description', description)
+  formData.append('userId', userId)
+  formData.appand('file', file)
+
+  try {
+    const res = await axios.post('/api/photos/upload/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    const photo = res.data;
+    dispatch(uploadPhoto(photo))
+  } catch (err) {
+    if (err.response.status === 500) {
+      console.log('There was a problem with the server')
+    } else {
+      console.log(err.response.data.message)
+    }
+  }
+}
+
+
 export default function photosReducer(state = {}, action) {
   switch (action.type) {
     case LOAD_PHOTOS:
@@ -97,6 +130,8 @@ export default function photosReducer(state = {}, action) {
     case DELETE_PHOTO:
       let newState = state.users.filter((data, i) => (i !== (action.photoId - 1)))
       return newState
+    case RECEIVE_PHOTO:
+      return { ...state, ...action.newPhoto }
     default:
       return state;
   }

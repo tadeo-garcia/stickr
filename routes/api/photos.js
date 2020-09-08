@@ -19,7 +19,7 @@ router.get('/:id', handleValidationErrors, asyncHandler(async (req, res, next) =
   res.json({ photo })
 }))
 
-router.delete('/:id', asyncHandler(async (req, res, nex) => {
+router.delete('/:id', asyncHandler(async (req, res, next) => {
 
   const photoId = req.params.id;
   const photoToDelete = await Photo.findByPk(photoId);
@@ -35,14 +35,51 @@ router.delete('/:id', asyncHandler(async (req, res, nex) => {
 
 }))
 
-router.post('/', singleMulterUpload('photo'), async (req, res) => {
-  const userData = req.body;
-  userData.photo = await singlePublicFileUpload(req.file);
-  const photo = new Photo(photoData);
-  await photo.save();
-  res.json(photo);
-})
 
+router.post('/upload', asyncHandler(async (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ message: 'No File Uploaded, please try again' })
+  }
+  console.log(req)
+  console.log(req.userId)
+
+  const file = req.files.file;
+  const url = `/pics/users/${file.name}`
+
+  file.mv(`/Users/jesusgarcia/Desktop/stickr-app-project/client/public/pics/users/${file.name}`, err => {
+    if (err) {
+      console.log(err)
+      res.status(500).send(err)
+    }
+  })
+
+  const newPhoto = await Photo.create({
+    description: 'my new sticker',
+    url: url,
+    userId: 1
+  })
+  // console.log(newPhoto)
+  res.json({ message: 'Success!' })
+}))
+
+
+// ~~~~~~~~~~~~~~~~~~~~~
+// router.post('/upload', asyncHandler(async (req, res, next) => {
+//   if (req.files === null) {
+//     return res.status(400).json({ message: 'No File Uploaded, please try again' })
+//   }
+//   const file = req.files.file;
+
+//   file.mv(`/Users/jesusgarcia/Desktop/stickr-app-project/client/public/pics/users/${file.name}`, err => {
+//     if (err) {
+//       console.log(err)
+//       res.status(500).send(err)
+//     }
+//   })
+//   const newPhoto = await Photo.create(req.body)
+//   res.json({ newPhoto })
+// }))
+// ~~~~~~~~~~~~~~~~~~~~
 
 
 module.exports = router;

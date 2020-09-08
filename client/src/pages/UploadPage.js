@@ -1,41 +1,29 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
+import PhotoUploadComponent from '../components/PhotoUploadComponent';
 import ModalNavbar from '../components/ModalNavBar';
 import FooterBar from '../components/FooterBar';
 import './uploadpage.css';
 
 function UploadPage() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-
-  }, []);
 
   const currentUserId = useSelector(state => state.auth.id);
   if (!currentUserId) return <Redirect to='/' />;
 
-  function handleUpload({ target: { files } }) {
-    let data = new FormData();
-    data.append('file', files[0])
-  }
-
-
   return (
-    <>
+    <div>
       <ModalNavbar />
       <div className='top-container'>
         <div id='link-div'>
           <Link to='/dashboard' id='dashboard-link'> Back to photo feed.</Link>
         </div>
         <div className='upload-container' >
-          <div className='upload-div'>
-            <input type='file' name='newPhoto' onChange={handleUpload} />
-          </div>
-        </div >
+          <PhotoUploadComponent />
+        </div>
       </div>
       <FooterBar />
-    </>
+    </div>
   )
 };
 
