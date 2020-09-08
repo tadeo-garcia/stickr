@@ -63,7 +63,7 @@
 Auth Slice of State: {
 
 - id: 1,
-- username: 'mkue',
+- username: 'horfe',
 - createdAt: ''2020-09-02T16:...830Z',
 - createdAt: ''2020-09-02T16:...830Z',
 
