@@ -128,8 +128,8 @@ export default function photosReducer(state = {}, action) {
     case LOAD_PHOTOS_BY_USER:
       return { ...state, users: action.photos }
     case DELETE_PHOTO:
-      let newState = state.users.filter((data, i) => (i !== (action.photoId - 1)))
-      return newState
+      // let newState = state.users.filter((data, i) => (i !== (action.photoId - 1)))
+      return state.users.filter((data, i) => (i !== (action.photoId - 1)))
     case RECEIVE_PHOTO:
       return { ...state, ...action.newPhoto }
     default:

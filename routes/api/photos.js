@@ -40,8 +40,7 @@ router.post('/upload', asyncHandler(async (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ message: 'No File Uploaded, please try again' })
   }
-  console.log(req)
-  console.log(req.userId)
+
 
   const file = req.files.file;
   const url = `/pics/users/${file.name}`
@@ -54,11 +53,11 @@ router.post('/upload', asyncHandler(async (req, res) => {
   })
 
   const newPhoto = await Photo.create({
-    description: 'my new sticker',
+    description: req.body.description,
     url: url,
-    userId: 1
+    userId: req.body.userId
   })
-  // console.log(newPhoto)
+
   res.json({ message: 'Success!' })
 }))
 
