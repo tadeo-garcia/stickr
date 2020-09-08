@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         validates: {
           len: [60, 60],
         },
-        aboutMe: {
-          allowNull: true,
-          type: DataTypes.STRING
-        }
       },
+      aboutMe: {
+        allowNull: true,
+        type: DataTypes.STRING
+      }
     },
     {
       defaultScope: {
@@ -54,10 +54,11 @@ module.exports = (sequelize, DataTypes) => {
   User.prototype.toSafeObject = function () {
     const {
       id,
-      username
+      username,
+      aboutMe
     } = this;
 
-    return { id, username };
+    return { id, username, aboutMe };
   };
 
   User.login = async function ({ username, password }) {

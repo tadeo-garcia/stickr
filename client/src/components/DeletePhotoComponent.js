@@ -18,7 +18,7 @@ function DeletePhotoButton({ currentUserId, photoId }) {
 
   return (
     <div>
-      <Link id='delete-button' onClick={handleDeletePhoto}>Delete this picture.</Link>
+      <span id='delete-button' onClick={handleDeletePhoto}>Delete this picture.</span>
     </div>
   )
 }
