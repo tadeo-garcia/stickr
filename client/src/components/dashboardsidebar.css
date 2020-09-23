@@ -1,6 +1,6 @@
 .sidebar{
   display:grid;
-  grid-template-rows: 65px 9fr;
+  grid-template-rows: 1fr 1fr 8fr;
   margin-top: 75px;
   color: black;
   font-size: 30px;
@@ -9,7 +9,12 @@
 #display-icon-div{
   display:flex;
   flex-direction: row;
+  height: auto
+}
 
+#view-text{
+  margin: 0px 15px;
+  width: 50px;
 }
 
 #grid-icon{

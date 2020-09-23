@@ -14,12 +14,13 @@ function DashboardSidebar({ changeDisplayGrid, changeDisplayScroll }) {
 
   return (
     <div className='sidebar'>
+      <p id='view-text'>Layout View:</p>
       <div id='display-icon-div'>
         <div id='grid-icon' onClick={changeDisplayGrid} ></div>
         <div id='scroll-icon' onClick={changeDisplayScroll} ></div>
       </div>
       <div id="users-link-div">
-        Stickers
+        View
         <br></br>
         by artist:
         {Object.values(usersList).map((user, index) => {

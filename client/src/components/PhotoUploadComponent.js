@@ -21,7 +21,6 @@ export default function PhotoUploadComponent() {
   }
 
   const handleDescriptionChange = e => {
-    // console.log(`~~~~~${e.target.value}~~~~~ETARGETVALUE`)
     setFileDescription(e.target.value)
   }
 
