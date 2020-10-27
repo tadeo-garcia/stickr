@@ -1,4 +1,4 @@
-const { singlePublicFileUpload, singleMulterUpload } = require('../util/awsS3')
+const { singlePublicFileUpload, singleMulterUpload,upload } = require('../util/awsS3')
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const asyncHandler = require('express-async-handler');
@@ -36,7 +36,23 @@ router.delete('/:id', asyncHandler(async (req, res, next) => {
 }))
 
 
-router.post('/upload', asyncHandler(async (req, res) => {
+// router.post('/upload', asyncHandler(async (req, res) => {
+//   if (req.files === null) {
+//     return res.status(400).json({ message: 'No File Uploaded, please try again' })
+//   }
+
+
+//   const file = req.files.file;
+//   const url = `/pics/users/${file.name}`
+
+//   file.mv(`/Users/jesusgarcia/Desktop/stickr-app-project/client/public/pics/users/${file.name}`, err => {
+//     if (err) {
+//       console.log(err)
+//       res.status(500).send(err)
+//     }
+//   })
+
+router.post('/upload',upload.single('resume'), asyncHandler(async (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ message: 'No File Uploaded, please try again' })
   }
@@ -51,6 +67,11 @@ router.post('/upload', asyncHandler(async (req, res) => {
       res.status(500).send(err)
     }
   })
+
+
+
+
+
 
   const newPhoto = await Photo.create({
     description: req.body.description,

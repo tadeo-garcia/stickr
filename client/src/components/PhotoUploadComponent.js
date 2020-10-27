@@ -28,7 +28,7 @@ export default function PhotoUploadComponent() {
   const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('file', file)
+    formData.append('resume', file)
     formData.append('description', fileDescription)
     formData.append('userId', currentUserId)
 
@@ -58,7 +58,7 @@ export default function PhotoUploadComponent() {
       <form onSubmit={handleSubmit}>
         <div className='upload-photo'>
           <input type='file' className='upload-photo' id='customPhoto'
-            onChange={handleFileChange}
+            name='resume' onChange={handleFileChange}
           />
         </div>
         <input type='text' placeholder='description'

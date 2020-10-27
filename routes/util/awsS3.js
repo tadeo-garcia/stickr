@@ -2,8 +2,9 @@ const AWS = require("aws-sdk");
 // name of your bucket here
 const NAME_OF_BUCKET = "stickr-app";
 const multer = require('multer');
-
-
+const multerS3 = require('multer-s3')
+const secret_key = process.env.AWS_SECRET_ACCESS_KEY
+const access_key = process.env.AWS_ACCESS_KEY_ID
 // else {
 //  make sure to set environment variables in production for:
 //  AWS_ACCESS_KEY_ID
@@ -82,13 +83,36 @@ const storage = multer.memoryStorage({
 const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
 const multipleMulterUpload = (nameOfKey) => multer({ storage: storage }).array(nameOfKey);
 
+
+AWS.config.update({
+    accessKeyId: access_key,
+    secretAccessKey: secret_key,
+    region: 'us-west-1',
+});
+
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: NAME_OF_BUCKET,
+        acl: 'public-read',
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        key: function (req, file, cb) {
+            cb(null, file.originalname);
+        }
+    })
+})
+
+
 module.exports = {
-  s3,
-  singlePublicFileUpload,
-  multiplePublicFileUpload,
-  singlePrivateFileUpload,
-  multiplePrivateFileUpload,
-  retrievePrivateFile,
-  singleMulterUpload,
-  multipleMulterUpload
-};
+  upload,
+  s3
+}
+  // singlePublicFileUpload,
+  // multiplePublicFileUpload,
+  // singlePrivateFileUpload,
+  // multiplePrivateFileUpload,
+  // retrievePrivateFile,
+  // singleMulterUpload,
+  // multipleMulterUpload
+// };

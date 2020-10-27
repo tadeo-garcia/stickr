@@ -42,7 +42,7 @@ export default function LogoutModal({ hideModal }) {
   }
 
   return (
-    <>
+    <div>
       <div onClick={hideModal} id='hide-modal'></div>
       <div id="modal-container">
         <div id='greetuser-div'>{usergreet}</div>
@@ -50,7 +50,7 @@ export default function LogoutModal({ hideModal }) {
         <Link to='/upload' id='upload-link'> Upload your own photos</Link>
         <span id='logout-span' onClick={handleClick}>Log out</span>
       </div>
-    </>
+    </div>
   )
 }
 
