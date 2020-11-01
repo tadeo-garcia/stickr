@@ -24,7 +24,7 @@ export default function PhotoUploadComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(file);
+    // console.log(file);
     // console.log(fileDescription);
 
     dispatch(uploadSinglePhoto(file, currentUserId, fileDescription));

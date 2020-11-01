@@ -93,43 +93,16 @@ export const deletePhotoById = (id) => {
   };
 };
 
-// export const uploadSinglePhoto = (photo) => async (dispatch) => {
-//   const { description, file, userId } = photo;
-//   const formData = new FormData();
-//   formData.append("description", description);
-//   formData.append("userId", userId);
-//   if (file) formData.append("file", file);
-//   const config = {
-//     headers: {
-//       "content-type": "multipart/form-data",
-//     },
-//   };
-
-//   // console.log(description);
-//   // console.log(userId);
-//   console.log(file);
-//   // successfully console logged ^^
-
-//   const res = await axios.post("/api/photos", formData, config);
-//   if(res.statusText){
-//     const photo = res.data;
-//     dispatch(uploadPhoto(photo));
-//   }
-
-//  return res
-
-// };
-
 export const uploadSinglePhoto = (file, currentUserId, description) => {
   let formData = new FormData();
 
   formData.append("description", description);
   formData.append("id", currentUserId);
-  formData.append("file", file.raw, file.name);
+  formData.append("file", file.raw, file.raw.name);
 
-  for (var key of formData.entries()) {
-    console.log(key[0] + ", " + key[1]);
-  }
+  // for (var key of formData.entries()) {
+  //   console.log(key[0] + ", " + key[1]);
+  // }
 
   let config = {
     headers: {
@@ -137,7 +110,7 @@ export const uploadSinglePhoto = (file, currentUserId, description) => {
     },
   };
   return async (dispatch) => {
-    const res = await axios.post("/api/photos", formData, config);
+    const res = await axios.post(`/api/photos/${currentUserId}`, formData, config);
     if (res.statusText) {
       const photo = res.data;
       dispatch(uploadPhoto(photo));

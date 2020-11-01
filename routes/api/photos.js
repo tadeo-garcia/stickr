@@ -1,5 +1,4 @@
 const express = require("express");
-// const fileUpload = require("express-fileupload");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../util/validation");
 const { Photo, User } = require("../../db/models");
@@ -8,7 +7,6 @@ const router = express.Router();
 const AWS = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
-// const path = require("path");
 const secret_key = process.env.AWS_SECRET_ACCESS_KEY;
 const access_key = process.env.AWS_ACCESS_KEY_ID;
 
@@ -35,8 +33,7 @@ const multerS3Config = multerS3({
     cb(null, { fieldName: file.fieldname });
   },
   key: function (req, file, cb) {
-    console.log(file);
-    cb(null, new Date().toISOString() + "-" + file.originalname);
+    cb(null, new Date().toISOString() + "-" + file.name);
   },
 });
 
@@ -48,14 +45,14 @@ const upload = multer({
   },
 });
 
-const singlePublicFileUpload = async (file) => {
+const singlePublicFileUpload = async (file, userId) => {
   const { name, mimetype, data } = await file;
-  console.log(name);
-  console.log(mimetype);
+  // console.log(name);
+  // console.log(mimetype);
 
   const path = require("path");
   // name of the file in your S3 bucket will be the date in ms plus the extension name
-  const Key = new Date().getTime().toString() + path.extname(name);
+  const Key = 'users/' + userId + '/' + new Date().getTime().toString() + path.extname(name);
   const uploadParams = {
     Bucket: "stickr-app",
     Key,
@@ -76,10 +73,13 @@ const storage = multer.memoryStorage({
 
 const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
 
-router.post("/", singleMulterUpload("file"), async (req, res) => {
-  console.log(req.files.file);
+router.post("/:id", singleMulterUpload("file"), async (req, res) => {
   const photoData = req.body;
-  photoData.url = await singlePublicFileUpload(req.files.file);
+  const userId = req.params.id;
+  photoData.url = await singlePublicFileUpload(req.files.file, userId);
+  const url = photoData.url
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
+  console.log(url)
   return res;
 });
 
@@ -119,15 +119,6 @@ router.delete(
     res.json({ message: "success" });
   })
 );
-
-// router.post("/", upload.singleMulterUpload("file"), async (req, res) => {
-//   const photoData = req.body;
-//   const obj = JSON.parse(JSON.stringify(req.body));
-//   console.log(obj);
-//   // photoData.file = await upload.singlePublicFileUpload(req.file);
-//   // const newPhoto = await Photo.create(photoData);
-//   // res.json({ newPhoto });
-// });
 
 // ~~~~~~~~~~~~~~~~~~~~~
 // router.post('/upload', asyncHandler(async (req, res, next) => {
