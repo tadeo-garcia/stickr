@@ -109,6 +109,13 @@ export const uploadSinglePhoto = (file, currentUserId, description) => {
       "Content-Type": "multipart/form-data",
     },
   };
+
+  let sentData = {
+    formData,
+    id: currentUserId,
+    description
+  }
+
   return async (dispatch) => {
     const res = await axios.post(`/api/photos/${currentUserId}`, formData, config);
     if (res.statusText) {

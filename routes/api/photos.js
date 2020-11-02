@@ -46,17 +46,17 @@ const upload = multer({
 });
 
 const singlePublicFileUpload = async (file, userId) => {
-  const { name, mimetype, data } = await file;
-  // console.log(name);
-  // console.log(mimetype);
+  const { originalname, mimetype, buffer } = await file;
+  console.log('~~~~~~~~~~FILE BELOW~~~~~~~~~~~~~~')
 
+  console.log(file)
   const path = require("path");
   // name of the file in your S3 bucket will be the date in ms plus the extension name
-  const Key = 'users/' + userId + '/' + new Date().getTime().toString() + path.extname(name);
+  const Key = 'users/' + userId + '/' + new Date().getTime().toString() + path.extname(originalname);
   const uploadParams = {
     Bucket: "stickr-app",
     Key,
-    Body: data,
+    Body: buffer,
     ACL: "public-read",
   };
   const result = await s3.upload(uploadParams).promise();
@@ -74,12 +74,17 @@ const storage = multer.memoryStorage({
 const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
 
 router.post("/:id", singleMulterUpload("file"), async (req, res) => {
-  const photoData = req.body;
-  const userId = req.params.id;
-  photoData.url = await singlePublicFileUpload(req.files.file, userId);
+  const photoData = req.file;
+  const description = req.body.description;
+  const userId = req.body.id;
+  console.log(req.body.description)
+  // console.log(req.file)
+
+  photoData.url = await singlePublicFileUpload(req.file, userId);
   const url = photoData.url
   console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
   console.log(url)
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
   return res;
 });
 
