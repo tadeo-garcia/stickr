@@ -109,13 +109,11 @@ export const uploadSinglePhoto = (file, currentUserId, description) => {
   return async (dispatch) => {
     const res = await axios.post(`/api/photos/`, formData, config);
     if (res) {
-      // console.log(res)
       const photo = res.data.photo;
       console.log(photo)
       dispatch(loadPhoto(photo));
     }
-    // const photo = res.data.photo;
-    // window.location.href= `/user/photo/${photo.id}`;
+   
     return res;
   };
 };
