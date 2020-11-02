@@ -2,7 +2,6 @@ const cors = require("cors");
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const fileUpload = require("express-fileupload");
 const helmet = require("helmet");
 const path = require("path");
 const logger = require("morgan");
@@ -13,15 +12,14 @@ const { AuthenticationError } = require("./routes/util/auth");
 const bodyParser = require("body-parser");
 
 const app = express();
-app.use(fileUpload());
-
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(bodyParser.urlencoded({ extended: false, limit: 1024 * 1024 * 5 }));
-app.use(bodyParser.json());
+// UPLOAD WORKS WITH OUT THIS BELOW
+// app.use(bodyParser.urlencoded({ extended: false, limit: 1024 * 1024 * 5 }));
+// app.use(bodyParser.json());
 
 app.use(cookieParser());
 

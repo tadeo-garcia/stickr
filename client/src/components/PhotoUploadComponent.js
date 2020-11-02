@@ -24,16 +24,18 @@ export default function PhotoUploadComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(file);
-    // console.log(fileDescription);
-
     dispatch(uploadSinglePhoto(file, currentUserId, fileDescription));
+    history.push('/dashboard')
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="upload-photo">
+          <input type="text" placeholder="Add a caption." onChange={handleDescriptionChange} />
+       
+        </div>
+         <input type="submit" value="Upload" className="uploadButton" />
           <input
             type="file"
             className="upload-photo"
@@ -41,9 +43,6 @@ export default function PhotoUploadComponent() {
             name="file"
             onChange={handleFileChange}
           />
-        </div>
-        <input type="text" placeholder="description" onChange={handleDescriptionChange} />
-        <input type="submit" value="Upload" className="uploadButton" />
       </form>
     </>
   );
