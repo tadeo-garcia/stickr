@@ -1,16 +1,16 @@
-.upload-photo{
-
+.upload-photo__container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
 }
 
-.upload-photo-label{
-
+.upload-photo-label {
 }
 
-#customPhoto{
-
-
+#customPhoto {
 }
 
-.upload-button{
-  
+.upload-button {
 }
