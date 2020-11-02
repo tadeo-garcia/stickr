@@ -47,9 +47,6 @@ const upload = multer({
 
 const singlePublicFileUpload = async (file, userId) => {
   const { originalname, mimetype, buffer } = await file;
-  console.log('~~~~~~~~~~FILE BELOW~~~~~~~~~~~~~~')
-
-  console.log(file)
   const path = require("path");
   // name of the file in your S3 bucket will be the date in ms plus the extension name
   const Key = 'users/' + userId + '/' + new Date().getTime().toString() + path.extname(originalname);
@@ -73,20 +70,20 @@ const storage = multer.memoryStorage({
 
 const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
 
-router.post("/:id", singleMulterUpload("file"), async (req, res) => {
-  const photoData = req.file;
+router.post("/", singleMulterUpload("file"), asyncHandler(async (req, res) => {
+  const photoData = req.body;
   const description = req.body.description;
   const userId = req.body.id;
-  console.log(req.body.description)
-  // console.log(req.file)
 
   photoData.url = await singlePublicFileUpload(req.file, userId);
   const url = photoData.url
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
   console.log(url)
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~')
-  return res;
-});
+  
+  const photo = await Photo.create({description, url, userId})
+  return res.json ({ photo })
+
+})
+);
 
 router.get(
   "/",
@@ -124,23 +121,5 @@ router.delete(
     res.json({ message: "success" });
   })
 );
-
-// ~~~~~~~~~~~~~~~~~~~~~
-// router.post('/upload', asyncHandler(async (req, res, next) => {
-//   if (req.files === null) {
-//     return res.status(400).json({ message: 'No File Uploaded, please try again' })
-//   }
-//   const file = req.files.file;
-
-//   file.mv(`/Users/jesusgarcia/Desktop/stickr-app-project/client/public/pics/users/${file.name}`, err => {
-//     if (err) {
-//       console.log(err)
-//       res.status(500).send(err)
-//     }
-//   })
-//   const newPhoto = await Photo.create(req.body)
-//   res.json({ newPhoto })
-// }))
-// ~~~~~~~~~~~~~~~~~~~~
 
 module.exports = router;

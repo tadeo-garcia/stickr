@@ -100,28 +100,22 @@ export const uploadSinglePhoto = (file, currentUserId, description) => {
   formData.append("id", currentUserId);
   formData.append("file", file.raw, file.raw.name);
 
-  // for (var key of formData.entries()) {
-  //   console.log(key[0] + ", " + key[1]);
-  // }
-
   let config = {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   };
 
-  let sentData = {
-    formData,
-    id: currentUserId,
-    description
-  }
-
   return async (dispatch) => {
-    const res = await axios.post(`/api/photos/${currentUserId}`, formData, config);
-    if (res.statusText) {
-      const photo = res.data;
-      dispatch(uploadPhoto(photo));
+    const res = await axios.post(`/api/photos/`, formData, config);
+    if (res) {
+      // console.log(res)
+      const photo = res.data.photo;
+      console.log(photo)
+      dispatch(loadPhoto(photo));
     }
+    // const photo = res.data.photo;
+    // window.location.href= `/user/photo/${photo.id}`;
     return res;
   };
 };
