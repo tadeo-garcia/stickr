@@ -35,16 +35,17 @@ function AboutMePage() {
             <br />
             <h2>
               If you have any questions feel free to contact me, through{" "}
-              <a href="mailto:tadeoalyta@gmail.com">email</a>.
+              <a href="mailto:tadeoalyta@gmail.com" id='aboutme-link'>email</a>.
             </h2>
             <br />
             <h2>-T. Garcia</h2>
+            <div className='aboutme-links'>
+              <a href="tadeogarcia.me" id='aboutme-link' >Portfolio</a>
+              <a href="https://www.github.com/tadeo-garcia" id='aboutme-link'>Github</a>
+              <a href="https://www.linkedin.com/in/tadeo-garcia/" id='aboutme-link'>LinkedIn</a>
+            </div>
           </div>
-          {/* <div className='aboutme-links'>
-            <a href="tadeogarcia.me">Portfolio</a>
-            <a href="https://www.github.com/tadeo-garcia">Github</a>
-            <a href="https://www.linkedin.com/in/tadeo-garcia/">LinkedIn</a>
-          </div> */}
+          
         </div>
       </div>
       <FooterBar />
