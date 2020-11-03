@@ -13,11 +13,17 @@ export default function PhotoUploadComponent() {
   const [file, setFile] = useState(null);
   const [fileDescription, setFileDescription] = useState("");
   const [topVar, setTopVar] = useState({top:-100})
+  const [enabled, setEnabled] = useState(false)
 
   const handleFileChange = (e) => {
     setFile({
       raw: e.target.files[0],
     });
+
+    
+    console.log('inside the file and i should set it to enabled')
+    setEnabled(!enabled)
+    
   };
 
   const handleDescriptionChange = (e) => {
@@ -35,7 +41,8 @@ export default function PhotoUploadComponent() {
     }, 1500)
   };
 
- 
+
+  console.log(enabled)
   return (
     <div className="upload-photo__container">
       <div > 
@@ -56,7 +63,7 @@ export default function PhotoUploadComponent() {
           onChange={handleFileChange}
         />
         <textarea rows={2} placeholder="  Add a caption, if you'd like." onChange={handleDescriptionChange} className="upload-photo__input"/>
-        <input type="submit" value="Upload" className="uploadButton upload-photo__input" />
+        <button type="submit" disabled={!enabled ? true : false} className="uploadButton" >Upload</button>
       </form>
     </div>
   );

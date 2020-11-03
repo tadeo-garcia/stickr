@@ -12,8 +12,6 @@
   width: 80%;
   height: inherit;
   background-color: white;
-  /* overflow:auto; */
-  /* margin: auto; */
 }
 
 .aboutme-div {
@@ -23,11 +21,10 @@
 
 .aboutme-links {
   margin-top: 50px;
-  height: 75px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* border: 1px solid black; */
 }
 
 #aboutme-link {

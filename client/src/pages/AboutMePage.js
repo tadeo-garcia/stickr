@@ -24,13 +24,13 @@ function AboutMePage() {
             <h2>
               {" "}
               To dive deeper into the code, checkout the link to the github repository at the
-              bottom!
+              bottom.
             </h2>
             <br />
             <h2>
               {" "}
               In addition to the site, all of the stickers that are under the artist name tsoyok,
-              were also created by me!
+              were also created by me.
             </h2>
             <br />
             <h2>
@@ -38,11 +38,12 @@ function AboutMePage() {
               <a href="mailto:tadeoalyta@gmail.com" id='aboutme-link'>email</a>.
             </h2>
             <br />
-            <h2>-T. Garcia</h2>
+            <h2>T. Garcia</h2>
             <div className='aboutme-links'>
-              <a href="tadeogarcia.me" id='aboutme-link' >Portfolio</a>
+              <a href="http://tadeogarcia.me" id='aboutme-link' >Portfolio</a>
               <a href="https://www.github.com/tadeo-garcia" id='aboutme-link'>Github</a>
               <a href="https://www.linkedin.com/in/tadeo-garcia/" id='aboutme-link'>LinkedIn</a>
+              <a href="https://angel.co/u/jesus-tadeo-garcia" id='aboutme-link'>Angel List</a>
             </div>
           </div>
           
