@@ -20,10 +20,7 @@ export default function PhotoUploadComponent() {
       raw: e.target.files[0],
     });
 
-    
-    console.log('inside the file and i should set it to enabled')
     setEnabled(!enabled)
-    
   };
 
   const handleDescriptionChange = (e) => {
@@ -42,7 +39,6 @@ export default function PhotoUploadComponent() {
   };
 
 
-  console.log(enabled)
   return (
     <div className="upload-photo__container">
       <div > 
