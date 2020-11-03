@@ -40,6 +40,11 @@ function AboutMePage() {
             <br />
             <h2>-T. Garcia</h2>
           </div>
+          {/* <div className='aboutme-links'>
+            <a href="tadeogarcia.me">Portfolio</a>
+            <a href="https://www.github.com/tadeo-garcia">Github</a>
+            <a href="https://www.linkedin.com/in/tadeo-garcia/">LinkedIn</a>
+          </div> */}
         </div>
       </div>
       <FooterBar />

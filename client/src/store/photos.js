@@ -5,7 +5,7 @@ const LOAD_PHOTOS = "photos/LOAD_PHOTOS";
 const LOAD_PHOTOS_BY_USER = "photos/LOAD_PHOTOS_BY_USER";
 const LOAD_PHOTO = "photos/LOAD_PHOTO";
 const DELETE_PHOTO = "photos/DELETE_PHOTO";
-const RECEIVE_PHOTO = "/photos/RECEIVE_PHOTO";
+const LOAD_NEW = "/photos/LOAD_NEW";
 
 export const loadPhotos = (photos) => {
   return {
@@ -37,7 +37,7 @@ export const deletePhoto = (photoId) => {
 
 export const uploadPhoto = (newPhoto) => {
   return {
-    type: RECEIVE_PHOTO,
+    type: LOAD_NEW,
     newPhoto,
   };
 };
@@ -110,7 +110,6 @@ export const uploadSinglePhoto = (file, currentUserId, description) => {
     const res = await axios.post(`/api/photos/`, formData, config);
     if (res) {
       const photo = res.data.photo;
-      console.log(photo)
       dispatch(loadPhoto(photo));
     }
    
@@ -128,7 +127,7 @@ export default function photosReducer(state = {}, action) {
       return { ...state, users: action.photos };
     case DELETE_PHOTO:
       return state.users.filter((data, i) => i !== action.photoId - 1);
-    case RECEIVE_PHOTO:
+    case LOAD_NEW:
       return { ...state, ...action.newPhoto };
     default:
       return state;

@@ -5,7 +5,7 @@ import { getUsers } from '../store/users'
 import SingleGridComponent from './SingleGridComponent.js';
 import './photofeed.css'
 
-function PhotoGridComponent() {
+function PhotoGridComponent({showNotif}) {
   const dispatch = useDispatch();
 
 

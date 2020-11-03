@@ -77,8 +77,6 @@ router.post("/", singleMulterUpload("file"), asyncHandler(async (req, res) => {
 
   photoData.url = await singlePublicFileUpload(req.file, userId);
   const url = photoData.url
-  console.log(url)
-  
   const photo = await Photo.create({description, url, userId})
   return res.json ({ photo })
 

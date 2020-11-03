@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { uploadSinglePhoto } from "../store/photos";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 
+import "./notification.css"
 import "./photouploadcomponent.css";
 
 export default function PhotoUploadComponent() {
@@ -12,6 +12,7 @@ export default function PhotoUploadComponent() {
   const currentUserId = useSelector((state) => state.auth.id);
   const [file, setFile] = useState(null);
   const [fileDescription, setFileDescription] = useState("");
+  const [topVar, setTopVar] = useState({top:-100})
 
   const handleFileChange = (e) => {
     setFile({
@@ -25,13 +26,28 @@ export default function PhotoUploadComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(uploadSinglePhoto(file, currentUserId, fileDescription));
-    history.push('/dashboard')
+    setTopVar({top:75})
+    setTimeout(()=>{
+      dispatch(uploadSinglePhoto(file, currentUserId, fileDescription));
+    }, 1000)
+    setTimeout(()=>{
+      history.push('/dashboard')
+    }, 1500)
   };
 
+ 
   return (
     <div className="upload-photo__container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className="upload-photo__form">
+      <div > 
+        {topVar ? 
+          <div className="notification__container-upload" style={topVar}>
+          Photo Successfully Submitted
+        </div>
+        :
+          null
+        }
+     </div>
+     <form onSubmit={handleSubmit} encType="multipart/form-data" className="upload-photo__form">
         <input
           type="file"
           className="upload-photo__input"

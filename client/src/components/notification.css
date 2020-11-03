@@ -1,0 +1,19 @@
+.notification__container-upload {
+  background-color: #444;
+  color: white;
+  padding: 16px;
+  position: absolute;
+  right: 40px;
+  z-index: 100;
+  transition: top 0.5s ease;
+}
+
+.notification__container-delete {
+  background-color: #444;
+  color: white;
+  padding: 16px;
+  position: absolute;
+  /* right: 40px; */
+  z-index: 100;
+  transition: right 0.5s ease;
+}
