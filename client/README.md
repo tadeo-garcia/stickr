@@ -37,3 +37,18 @@ const login = async () => {
   }
 };
 ```
+
+Deploy to Heroku
+Create a new project
+Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
+Install the Heroku CLI
+Run $ heroku login
+Add heroku as a remote to this git repo $ heroku git:remote -a <project_name>
+Push the project to heroku $ git push heroku master
+Connect to the heroku shell and prepare your database
+    $ heroku run bash
+    $ sequelize-cli db:migrate
+    $ sequelize-cli db:seed:all
+(You can interact with your database this way as youd like, but beware that db:drop should not be run in the heroku environment)
+
+Add environment variables on the heroku environment using the Heroku dashboard. (Setting Heroku Config Vars)[https://devcenter.heroku.com/articles/config-vars]
