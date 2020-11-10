@@ -1,5 +1,5 @@
-# Sticker
-*by Tadeo Garcia - [Visit Sticker](http://stickr-aa.herokuapp.com)*
+# Stickr
+*by Tadeo Garcia - [Visit Stickr](http://stickr-aa.herokuapp.com)*
 
 **Table of Contents**
 - [Stickr at a glance](#Stickr-overview)
@@ -13,7 +13,7 @@ Stickr is a fullstack web application that is inpsired by the popular photograph
 
 Stickr has a focus on the graffiti community, allowing users to upload and browse stickers from other members from around the world! 
 
-![Picture of Homepage](/client/public/pics/homepage.gif)
+![Picture of Homepage](./client/public/pics/homepage.gif)
 
 
 ## Technologies Used
@@ -49,14 +49,14 @@ return (
  );
 ```
 
-![Picture of Dashboard](/client/public/pics/dashboard_small.gif)
+![Picture of Dashboard](./client/public/pics/dashboard_small.gif)
 
 ### Redux
 Redux is also a key ingredient in the front-end's implementation. Redux, react-redux, and redux-thunk work together to manage the application's sstate. With the use of state, Stickr is able to access stickers, and is able to render them fast and efficiently depending on how the React component dispatches and stores them in the Redux store.
 
 All of the front-end technologies listed above, in tandem with AWS, allow the user to upload pictures to their account and add them to their collection!
 
-![Picture of Upload](/client/public/pics/upload-pic.gif)
+![Picture of Upload](./client/public/pics/upload-pic.gif)
 
 
 ## Back-end Overview
