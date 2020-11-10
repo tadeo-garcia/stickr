@@ -5,7 +5,6 @@ import './photofeed.css'
 
 const SingleScrollComponent = ({ url }) => {
   return (
-
     <img src={url} alt='sticker' className='scroll-sticker' />
 
   );

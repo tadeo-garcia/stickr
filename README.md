@@ -13,7 +13,8 @@ Stickr is a fullstack web application that is inpsired by the popular photograph
 
 Stickr has a focus on the graffiti community, allowing users to upload and browse stickers from other members from around the world! 
 
-<!-- First Gif of App -->
+![Picture of Homepage](/client/public/pics/homepage.gif)
+
 
 ## Technologies Used
 Stickr is composed of a few key technologies that help render a very user-friendly interface on the front-end, while maintaining a fast and efficient data management system on the back-end.
@@ -27,14 +28,36 @@ In addition, to React, Stickr is tied to Amazon Web Services which allows for us
 ### React
 React is the foundation of the Stickr's front-end architecture. Individual React components are used throughout the site to provide an interface that resembles that of Flickrs, with some minor adjustments that suit Stickr's functionality better. An example of this is a dual layout implementation that allows the user to either view stickers in a grid layout or a scrolling layout, depending on their preference. Below is a code snippet that shows how this is accomplished, as well as Gif showing it in action!
 
-<!-- code snippet and gif of grid/scroll layout -->
+```
+//To render the grid layout
+return (
+  <div classname="photo-grid-container">
+        {Object.values(photoList).map((photo, index) =&gt; {
+          let link = <code>/user/${photo.userId}/photo/${photo.id}</code>
+          return (
+            <a href="{link}" key="{index}">
+              <div classname="photo-grid-item">
+                <div classname="photo">
+                  <singlegridcomponent url="{photo.url}"/>
+                </div>
+              </div>
+            </a>
+          )
+        }
+        )}
+  </div>
+ );
+```
+
+![Picture of Dashboard](/client/public/pics/dashboard_small.gif)
 
 ### Redux
 Redux is also a key ingredient in the front-end's implementation. Redux, react-redux, and redux-thunk work together to manage the application's sstate. With the use of state, Stickr is able to access stickers, and is able to render them fast and efficiently depending on how the React component dispatches and stores them in the Redux store.
 
 All of the front-end technologies listed above, in tandem with AWS, allow the user to upload pictures to their account and add them to their collection!
 
-<!-- uploading pic gif -->
+![Picture of Upload](/client/public/pics/upload-pic.gif)
+
 
 ## Back-end Overview
 

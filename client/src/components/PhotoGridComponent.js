@@ -8,7 +8,6 @@ import './photofeed.css'
 function PhotoGridComponent({showNotif}) {
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     dispatch(getPhotos())
     dispatch(getUsers())
@@ -19,7 +18,6 @@ function PhotoGridComponent({showNotif}) {
   if (!photoList) {
     return null
   }
-
 
   return (
     <div className="photo-grid-container">
