@@ -39,4 +39,71 @@ All of the front-end technologies listed above, in tandem with AWS, allow the us
 ## Back-end Overview
 
 ## Express.js
-The back-end portion of Stickr is a minimal, but very effective server created by using the Express.js framework. The models, migragtions and seed files are made using sequelize
+The back-end portion of Stickr is a minimal, but very effective server created by using the Express.js framework. The models, migragtions and seed files are made using Sequelize and its command line interface (CLI).
+Those two technologies work in conjunction with a PostgreSQL database, which provide several different relationships among our data models. Creating custom queries, with the help of the relationships, allows Stickr's backend to send data for 1 sticker, all stickers, all stickers that belong to one user, and all other combinations in between.
+
+The following code shows how to retrieve all the photos for one user:
+
+```
+router.get('/:id/photos', asyncHandler(async function (req, res, _next) {
+  const userId = req.params.id; 
+  const photos = await Photo.findAll({ where: { userId } }) 
+  res.json({ photos }); 
+}));
+```
+
+Lastly, in order to post users' photos to AWS, the multer and multerS3 middlewares had to be used in conjunction with the corresponding API endpoints, to configure and access the appropriate AWS3 storage bucket. The following code snippet shows a portion of the configuration and publishing process to AWS3.
+
+```
+const multerS3Config = multerS3({ 
+  s3: s3, bucket: "stickr-app", 
+  metadata: function (req, file, cb) { 
+    cb(null, { fieldName: file.fieldname });
+     }, 
+  key: function (req, file, cb) { 
+    cb(null, new Date().toISOString() + "-" + file.name); 
+    },
+});
+
+const upload = multer({ 
+  storage: multerS3Config,
+  fileFilter: fileFilter, 
+  limits: { fileSize: 1024 _1024_ 5 
+  } 
+});
+
+const singlePublicFileUpload = async (file, userId) => { 
+  const { originalname, mimetype, buffer } = await file; 
+  const path = require("path"); 
+  const Key = 'users/' + userId + '/' + new Date().getTime().toString() + path.extname(originalname); 
+  const uploadParams = { 
+    Bucket: "stickr-app", 
+    Key, Body: buffer, 
+    ACL: "public-read" }; 
+    const result = await s3.upload(uploadParams).promise();
+ return result.Location;
+};
+
+const storage = multer.memoryStorage({ 
+  destination: function (req, file, callback) { 
+    callback(null, ""); 
+    } 
+});
+
+const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
+
+router.post("/", singleMulterUpload("file"), asyncHandler(async (req, res) => { 
+  const photoData = req.body; 
+  const description = req.body.description; 
+  const userId = req.body.id;
+
+  photoData.url = await singlePublicFileUpload(req.file, userId);
+  const url = photoData.url
+  const photo = await Photo.create({description, url, userId})
+  return res.json ({ photo })
+  }) 
+);
+```
+
+## Moving Forward
+First, thank you for reading this far into this Readme, I really appreciate you taking the time to do so. Second, I'd like to share some of the following features that I hope to implement in the near future. To begin I'd like to add 'likes' to the pictures, and then be able to sort them by most likes. Additionally, I will implement the ability for users to follow other users, so as the community grows the user feed is specifically made up of stickers that the user wants to see of other users they follow. Lastly, I would like to implement some sort of messaging system for users to communicate. Again, thank you for taking the time to check out the project, I hope you enjoyed it and the art as much as I do!

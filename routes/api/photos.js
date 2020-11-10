@@ -71,16 +71,16 @@ const storage = multer.memoryStorage({
 const singleMulterUpload = (nameOfKey) => multer({ storage: storage }).single(nameOfKey);
 
 router.post("/", singleMulterUpload("file"), asyncHandler(async (req, res) => {
-  const photoData = req.body;
-  const description = req.body.description;
-  const userId = req.body.id;
+    const photoData = req.body;
+    const description = req.body.description;
+    const userId = req.body.id;
 
-  photoData.url = await singlePublicFileUpload(req.file, userId);
-  const url = photoData.url
-  const photo = await Photo.create({description, url, userId})
-  return res.json ({ photo })
+    photoData.url = await singlePublicFileUpload(req.file, userId);
+    const url = photoData.url
+    const photo = await Photo.create({description, url, userId})
+    return res.json ({ photo })
 
-})
+  })
 );
 
 router.get(
